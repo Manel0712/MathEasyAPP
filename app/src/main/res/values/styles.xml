@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Button">
+        <item name="android:backgroundTint">@color/fons</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="textButtonLoggin" parent="Button">
+        <item name="android:text">@string/logginButtonText</item>
+    </style>
+    <style name="textButtonRegister" parent="Button">
+        <item name="android:text">@string/registerButtonText</item>
+    </style>
+    <style name="textButtonPractica" parent="Button">
+        <item name="android:text">@string/practicaButtonText</item>
+    </style>
+    <style name="textButtonJugar">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/jugarButtonText</item>
+    </style>
+    <style name="Circle" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="explication">
+        <item name="android:background">@color/fons</item>
+    </style>
+    <style name="textView">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="textViewOptions">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="textButtonComprovar" parent="Button">
+        <item name="android:text">@string/comprovaButtonText</item>
+    </style>
+    <style name="textButtonTancar">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/tancaButtonText</item>
+    </style>
+</resources>

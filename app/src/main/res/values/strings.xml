@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MathEasy</string>
+    <string name="logginButtonText">Inici de sessio</string>
+    <string name="registerButtonText">Mode de convidats</string>
+    <string name="practicaButtonText">Practicar</string>
+    <string name="jugarButtonText">Jugar</string>
+    <string name="comprovaButtonText">Comprovar</string>
+    <string name="tancaButtonText">Tancar</string>
+</resources>
