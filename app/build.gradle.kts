@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin") version "2.0.0"
+    alias(libs.plugins.secrets.plugin)
     kotlin("kapt")
 }
 
@@ -37,8 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    viewBinding {
-        enable = true
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -46,14 +47,18 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
+    implementation(libs.androidx.activity) // para viewModels()
     implementation(libs.androidx.constraintlayout)
     implementation(libs.google.maps)
     implementation(libs.glide)
     implementation(libs.recyclerview)
-    kapt(libs.glideCompiler)
-    implementation(libs.glideTransformations)
-    implementation("jp.wasabeef:glide-transformations:4.3.0")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp.logging)
+    implementation(libs.swiperefreshlayout)
+    implementation(libs.lifecycle.process)
+    implementation(libs.lifecycle.viewmodel.ktx) // viewModels()
+    implementation(libs.glide.transformations) // solo implement
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

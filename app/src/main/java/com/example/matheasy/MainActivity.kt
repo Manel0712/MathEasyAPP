@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
     }
+    fun logginClick(view: View) {
+        val i = Intent(this, Loggin::class.java)
+        startActivity(i)
+    }
     fun convidatsClick(view: View) {
         val i = Intent(this, MainActivity2::class.java)
         startActivity(i)

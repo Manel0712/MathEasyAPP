@@ -6,4 +6,7 @@
     <string name="jugarButtonText">Jugar</string>
     <string name="comprovaButtonText">Comprovar</string>
     <string name="tancaButtonText">Tancar</string>
+    <string name="userText">Nom d\'usuari</string>
+    <string name="passwordText">Password</string>
+    <string name="logginValidateButtonText">Iniciar sessio</string>
 </resources>

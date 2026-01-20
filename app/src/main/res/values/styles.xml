@@ -52,4 +52,28 @@
         <item name="android:textStyle">bold</item>
         <item name="android:text">@string/tancaButtonText</item>
     </style>
+    <style name="inputs">
+        <item name="android:background">@color/fons</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+    <style name="textViewUser">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/userText</item>
+    </style>
+    <style name="textViewPassword">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/passwordText</item>
+    </style>
+    <style name="textButtonLogginValidate" parent="Button">
+        <item name="android:text">@string/logginValidateButtonText</item>
+    </style>
 </resources>
