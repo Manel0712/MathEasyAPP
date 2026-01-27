@@ -1,14 +1,17 @@
 package com.example.matheasy.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matheasy.R
 import com.example.matheasy.models.LocationItem
 
 class LocationAdapter(
+    private val context: Context,
     private val items: List<LocationItem>,
     private val onItemClick: (LocationItem) -> Unit
 ) : RecyclerView.Adapter<LocationAdapter.ViewHolder>() {
@@ -20,6 +23,9 @@ class LocationAdapter(
             if (!item.bloqueado) {
                 tvName.text = item.name
                 itemView.setOnClickListener { onItemClick(item) }
+                if (item.completado) {
+                    tvName.setBackgroundColor(ContextCompat.getColor(context, R.color.fons))
+                }
             }
         }
     }

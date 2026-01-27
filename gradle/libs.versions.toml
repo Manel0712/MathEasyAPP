@@ -19,6 +19,7 @@ swiperefreshlayout = "1.1.0"
 lifecycle = "2.6.2"
 glide-transformations = "4.3.0"
 secrets = "2.0.0"
+konfetti = "1.2.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,6 +41,7 @@ swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefre
 lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
 lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version = "lifecycle" }
 glide-transformations = { group = "jp.wasabeef", name = "glide-transformations", version.ref = "glide-transformations" }
+konfetti = { group = "nl.dionsegijn", name = "konfetti", version.ref = "konfetti" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

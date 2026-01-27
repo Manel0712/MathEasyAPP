@@ -5,6 +5,7 @@ data class LocationItem(
     val lat: Double,
     val lng: Double,
     val numero: String,
+    val image: String,
     var bloqueado: Boolean = true,
     var completado: Boolean = false
 )

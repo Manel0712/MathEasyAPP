@@ -9,20 +9,23 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.example.matheasy.models.LocationItem
+import com.example.matheasy.models.MarkerInfo
 import jp.wasabeef.glide.transformations.BlurTransformation
 
-class infoWindowAdapter(mContext: Context) : GoogleMap.InfoWindowAdapter {
+class infoWindowAdapter(private val mContext: Context) : GoogleMap.InfoWindowAdapter {
     var view: View = LayoutInflater.from(mContext).inflate(R.layout.infowindowcustom, null)
 
     private fun setInfoWindowText(marker: Marker) {
         if (marker.tag == null) return;
 
-        //val monument: monuments = marker.tag as monuments
+        val Marker: MarkerInfo = marker.tag as MarkerInfo
 
         val binding = InfowindowcustomBinding.bind(view);
 
-        binding.title.text = "Espanya-Mataro"
-        binding.background.setImageResource(R.drawable.p1010255)
+        binding.title.text = Marker.title
+        val image = mContext.resources.getIdentifier(Marker.image, "drawable", mContext.packageName)
+        binding.background.setImageResource(image)
     }
 
     override fun getInfoWindow(p0: Marker): View {
