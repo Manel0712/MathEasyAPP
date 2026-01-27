@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.matheasy.adapters.LocationAdapter
 import com.example.matheasy.adapters.infoWindowAdapter
 import com.example.matheasy.databinding.ActivityMapaBinding
+import com.example.matheasy.models.Alumne
 import com.example.matheasy.models.LocationItem
 import com.example.matheasy.models.MarkerInfo
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -40,6 +41,8 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
     private var isPanelOpen = false
     private var panelWidth = 0f
     private var niveles = getLocations()
+    private lateinit var alumne: Alumne
+    var convidats = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +65,7 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
         Log.d("API_KEY", "Mi API Key: " + apiKey ?: "Null")
 
         binding.rvLocations.layoutManager = LinearLayoutManager(this)
-        binding.rvLocations.adapter = LocationAdapter(getLocations()) { location ->
+        binding.rvLocations.adapter = LocationAdapter(this, getLocations()) { location ->
             marcarUbicacion(location)
             cerrarPanel()
         }
@@ -79,6 +82,11 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
             panelWidth = binding.rvLocations.width.toFloat()
             abrirPanel()
         }
+
+        convidats = intent.getBooleanExtra("convidats", false)
+        if (!convidats) {
+            alumne = intent.getSerializableExtra("Alumne") as Alumne
+        }
     }
 
     override fun onMapReady(mapaGoogle: GoogleMap) {
@@ -90,12 +98,15 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
             val i = Intent(this, nivells::class.java)
             i.putExtra("nivell", tagInfo.title)
             i.putExtra("numero", tagInfo.numero)
+            i.putExtra("convidats", convidats)
+            if (!convidats) {
+                i.putExtra("Alumne", alumne)
+            }
             resultLauncherConfiguration.launch(i)
         }
     }
 
     var resultLauncherConfiguration = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-
     { result ->
         val data: Intent? = result.data
         if (data!!.getStringExtra("numero").toString().equals("1-1")) {
@@ -103,12 +114,12 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                 mapa.clear()
                 niveles[1].bloqueado = false
                 niveles[0].completado = true
-                binding.rvLocations.adapter = LocationAdapter(niveles) { location ->
+                binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
                     marcarUbicacion(location)
                     cerrarPanel()
                 }
                 binding.rvLocations.adapter!!.notifyDataSetChanged()
-                for (c in 0 until 2) {
+                for (c in 0 until 4) {
                     if (!niveles[c].bloqueado) {
                         marcarUbicacion(niveles[c])
                     }
@@ -116,14 +127,50 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
             }
         }
         else if (data.getStringExtra("numero").toString().equals("1-2")) {
-            mapa.clear()
-            for (c in 0 until 2) {
+            if (data!!.getBooleanExtra("bloqueado", false)) {
+                mapa.clear()
+                niveles[2].bloqueado = false
                 niveles[1].completado = true
-                if (!niveles[c].bloqueado) {
-                    marcarUbicacion(niveles[c])
+                binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
+                    marcarUbicacion(location)
+                    cerrarPanel()
+                }
+                binding.rvLocations.adapter!!.notifyDataSetChanged()
+                for (c in 0 until 4) {
+                    if (!niveles[c].bloqueado) {
+                        marcarUbicacion(niveles[c])
+                    }
                 }
             }
-            mostrarDialogoAceptar(this,"Si vols seguir jugant has de registrar-te")
+        }
+        else if (data.getStringExtra("numero").toString().equals("1-3")) {
+            if (data!!.getBooleanExtra("bloqueado", false)) {
+                mapa.clear()
+                niveles[3].bloqueado = false
+                niveles[2].completado = true
+                binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
+                    marcarUbicacion(location)
+                    cerrarPanel()
+                }
+                binding.rvLocations.adapter!!.notifyDataSetChanged()
+                for (c in 0 until 4) {
+                    if (!niveles[c].bloqueado) {
+                        marcarUbicacion(niveles[c])
+                    }
+                }
+            }
+        }
+        else if (data.getStringExtra("numero").toString().equals("1-4")) {
+            if (data!!.getBooleanExtra("bloqueado", false)) {
+                mapa.clear()
+                for (c in 0 until 2) {
+                    niveles[3].completado = true
+                    if (!niveles[c].bloqueado) {
+                        marcarUbicacion(niveles[c])
+                    }
+                }
+                mostrarDialogoAceptar(this, "Si vols seguir jugant has de registrar-te")
+            }
             /* if (data!!.getBooleanExtra("bloqueado", false)) {
                 mapa.clear()
                 niveles[1].bloqueado = false
@@ -223,7 +270,8 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
 
         marker?.tag = MarkerInfo(
             title = location.name,
-            numero = location.numero
+            numero = location.numero,
+            image = location.image,
         )
 
         marker?.let { marques.add(it) }
@@ -237,8 +285,10 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
 
     private fun getLocations(): List<LocationItem> {
         return listOf(
-            LocationItem("Mataró", 41.5354924, 2.4456584, "1-1", false),
-            LocationItem("Ocata", 41.4831877, 2.3317447, "1-2"),
+            LocationItem("Mataró", 41.5354924, 2.4456584, "1-1", "p1010255", false),
+            LocationItem("Ocata", 41.4831877, 2.3317447, "1-2", "aldi_el_masnou"),
+            LocationItem("Badalona", 41.4490912, 2.2423281, "1-3", "estacio_de_badalona_pompeu_fabra"),
+            LocationItem("Hospitalet", 41.3554322, 2.1246428, "1-4", "mwc_barcelona")
         )
     }
 }

@@ -12,6 +12,7 @@
         android:layout_width="462dp"
         android:layout_height="410dp"
         android:layout_marginTop="28dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,8 +36,19 @@
         android:layout_width="300dp"
         android:layout_height="138dp"
         android:layout_marginTop="9dp"
-        android:onClick="convidatsClick"
+        android:onClick="registreClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLoggin" />
+
+    <Button
+        android:id="@+id/buttonConvidats"
+        style="@style/textButtonConvidats"
+        android:layout_width="300dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="9dp"
+        android:onClick="convidatsClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
 </androidx.constraintlayout.widget.ConstraintLayout>

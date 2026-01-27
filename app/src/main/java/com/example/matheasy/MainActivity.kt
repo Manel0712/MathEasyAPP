@@ -26,8 +26,13 @@ class MainActivity : AppCompatActivity() {
         val i = Intent(this, Loggin::class.java)
         startActivity(i)
     }
+    fun registreClick(view: View) {
+        val i = Intent(this, Register::class.java)
+        startActivity(i)
+    }
     fun convidatsClick(view: View) {
         val i = Intent(this, MainActivity2::class.java)
+        i.putExtra("convidats", true)
         startActivity(i)
     }
 }

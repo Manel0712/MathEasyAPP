@@ -1,12 +1,20 @@
 <resources>
     <string name="app_name">MathEasy</string>
     <string name="logginButtonText">Inici de sessio</string>
-    <string name="registerButtonText">Mode de convidats</string>
+    <string name="registerButtonText">Registre</string>
+    <string name="convidatsButtonText">Mode de convidats</string>
     <string name="practicaButtonText">Practicar</string>
+    <string name="perfilButtonText">Veure Perfil</string>
     <string name="jugarButtonText">Jugar</string>
     <string name="comprovaButtonText">Comprovar</string>
     <string name="tancaButtonText">Tancar</string>
     <string name="userText">Nom d\'usuari</string>
     <string name="passwordText">Password</string>
+    <string name="nomText">Nom</string>
+    <string name="cognomsText">Cognoms</string>
+    <string name="cursText">Curs</string>
     <string name="logginValidateButtonText">Iniciar sessio</string>
+    <string name="registerValidateButtonText">Registrar-se</string>
+    <string name="saveButtonText">Guarda canvis</string>
+    <string name="closeButtonText">Sortir</string>
 </resources>

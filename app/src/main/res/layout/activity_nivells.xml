@@ -168,12 +168,12 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="300dp"
             android:layout_height="8dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="20dp"
             android:max="10"
             android:progress="0"
             android:progressTint="@color/fons"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.405"
+            app:layout_constraintHorizontal_bias="0.378"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonComprovar" />
 
@@ -189,6 +189,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8"
             app:srcCompat="@drawable/_89_7" />
+
+        <TextView
+            android:id="@+id/textView13"
+            style="@style/textViewOptions"
+            android:layout_width="299dp"
+            android:layout_height="124dp"
+            android:layout_marginTop="4dp"
+            android:onClick="option3Click"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.383"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -259,6 +271,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <nl.dionsegijn.konfetti.KonfettiView
+            android:id="@+id/konfettiView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

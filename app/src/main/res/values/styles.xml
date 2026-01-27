@@ -12,8 +12,14 @@
     <style name="textButtonRegister" parent="Button">
         <item name="android:text">@string/registerButtonText</item>
     </style>
+    <style name="textButtonConvidats" parent="Button">
+        <item name="android:text">@string/convidatsButtonText</item>
+    </style>
     <style name="textButtonPractica" parent="Button">
         <item name="android:text">@string/practicaButtonText</item>
+    </style>
+    <style name="textButtonPerfil" parent="Button">
+        <item name="android:text">@string/perfilButtonText</item>
     </style>
     <style name="textButtonJugar">
         <item name="android:backgroundTint">@color/white</item>
@@ -23,7 +29,6 @@
         <item name="android:text">@string/jugarButtonText</item>
     </style>
     <style name="Circle" parent="ShapeAppearance.Material3.SmallComponent">
-        <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
     <style name="explication">
@@ -57,6 +62,9 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/poppins</item>
     </style>
+    <style name="passwordInput" parent="inputs">
+        <item name="android:inputType">textPassword</item>
+    </style>
     <style name="textViewUser">
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">30dp</item>
@@ -73,7 +81,40 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:text">@string/passwordText</item>
     </style>
+    <style name="textViewNom">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/nomText</item>
+    </style>
+    <style name="textViewCognoms">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/cognomsText</item>
+    </style>
+    <style name="textViewCurs">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/cursText</item>
+    </style>
     <style name="textButtonLogginValidate" parent="Button">
         <item name="android:text">@string/logginValidateButtonText</item>
+    </style>
+    <style name="textButtonRegisterValidate" parent="Button">
+        <item name="android:text">@string/registerValidateButtonText</item>
+    </style>
+    <style name="textButtonSave" parent="Button">
+        <item name="android:text">@string/saveButtonText</item>
+    </style>
+    <style name="textButtonClose" parent="Button">
+        <item name="android:text">@string/closeButtonText</item>
     </style>
 </resources>

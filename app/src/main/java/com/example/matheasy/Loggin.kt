@@ -1,7 +1,17 @@
 package com.example.matheasy
 
+import android.content.ContentValues
+import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +24,12 @@ import com.example.matheasy.models.Alumne
 import com.example.matheasy.viewModels.LogginViewModel
 import com.example.matheasy.viewModels.LogginViewModelFactory
 import com.google.android.material.snackbar.Snackbar
+import okhttp3.ResponseBody
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
 
 class Loggin : AppCompatActivity() {
     private lateinit var binding: ActivityLogginBinding
@@ -32,26 +48,25 @@ class Loggin : AppCompatActivity() {
         viewModel.logginLoading.observe(this) { cargando ->
             if (cargando) {
                 binding.progress.visibility = View.VISIBLE
-            }
-            else {
+            } else {
                 binding.progress.visibility = View.GONE
             }
         }
         viewModel.loggin.observe(this) { alumnes ->
             if (alumnes.size > 0) {
-                alumne.Nom = alumnes[0].Nom
-                alumne.Cogmons = alumnes[0].Cogmons
-                alumne.Password = alumnes[0].Password
-                alumne.ProfilePicturePath = alumnes[0].ProfilePicturePath
-                alumne.Nom_Usuari = alumnes[0].Nom_Usuari
-                alumne.Curs = alumnes[0].Curs
-                alumne.Experiencia = alumnes[0].Experiencia
+                alumne = alumnes[0]
+                val i = Intent(this, MainActivity2::class.java)
+                i.putExtra("convidats", false)
+                i.putExtra("alumne", alumne)
+                startActivity(i)
             }
         }
         viewModel.error.observe(this) {
             if (it != null) {
-                val snackbar = Snackbar.make(binding.root, it,
-                    Snackbar.LENGTH_LONG).setAction("Action", null)
+                val snackbar = Snackbar.make(
+                    binding.root, it,
+                    Snackbar.LENGTH_LONG
+                ).setAction("Action", null)
                 snackbar.setActionTextColor(Color.WHITE)
                 val snackbarView = snackbar.view
                 snackbarView.setBackgroundColor(Color.RED)
