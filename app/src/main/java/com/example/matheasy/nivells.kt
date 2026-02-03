@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.icu.text.Transliterator
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.ToneGenerator
@@ -25,17 +26,26 @@ import java.lang.reflect.Array
 import kotlin.random.Random
 import kotlin.text.toDouble
 import android.speech.tts.TextToSpeech
+import android.widget.TextView
+import androidx.activity.viewModels
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.matheasy.models.Alumne
+import com.example.matheasy.viewModels.ExperienciaViewModel
+import com.example.matheasy.viewModels.ExperienciaViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import java.util.Locale
 import nl.dionsegijn.konfetti.KonfettiView
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
+import kotlin.getValue
 
 class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var tts: TextToSpeech
     private var ttsReady = false
     private var reproducirAlEstarListo = false
     private lateinit var binding: ActivityNivellsBinding
+    private val viewModel: ExperienciaViewModel by viewModels { ExperienciaViewModelFactory() }
     private lateinit var nivell: String
     private lateinit var numero: String
     private lateinit var progressBar: ProgressBar
@@ -49,6 +59,7 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
     var nivelXP: Int = 1
     var totalXP: Int = 0
     var dailyXP: Int = 0
+    var XP: Int = 0
     val xpPorAcierto = 10
     private lateinit var alumne: Alumne
     var convidats = false
@@ -62,6 +73,54 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        viewModel.experienciaUpdate.observe(this) { experiencia ->
+            if (experiencia.size > 0) {
+                if (respostesCorrectes >= 5 && numero.split("-")[1].toInt()-1 == alumne.Nivell) {
+                    viewModel.editLevel(alumne.id, alumne.Nivell + 1)
+                }
+                else {
+                    viewModel.informeGenerated("Individual", respostesCorrectes, 10-respostesCorrectes, XP, alumne.id)
+                }
+            }
+        }
+        viewModel.level.observe(this) { alumnes ->
+            if (alumnes.size > 0) {
+                alumne = alumnes[0]
+                viewModel.informeGenerated("Individual", respostesCorrectes, 10-respostesCorrectes, XP, alumne.id)
+            }
+        }
+        viewModel.informe.observe(this) { informe ->
+            if (informe.size > 0) {
+                val snackbar = Snackbar.make(
+                    binding.root, "Experiencia emmagatzemada correctament",
+                    Snackbar.LENGTH_LONG
+                ).setAction("Action", null)
+                snackbar.setActionTextColor(Color.WHITE)
+                val snackbarView = snackbar.view
+                snackbarView.setBackgroundColor(Color.RED)
+                val textView =
+                    snackbarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+                textView.setTextColor(Color.WHITE)
+                textView.textSize = 28f
+                snackbar.show()
+            }
+        }
+        viewModel.error.observe(this) {
+            if (it != null) {
+                val snackbar = Snackbar.make(
+                    binding.root, it,
+                    Snackbar.LENGTH_LONG
+                ).setAction("Action", null)
+                snackbar.setActionTextColor(Color.WHITE)
+                val snackbarView = snackbar.view
+                snackbarView.setBackgroundColor(Color.RED)
+                val textView =
+                    snackbarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+                textView.setTextColor(Color.WHITE)
+                textView.textSize = 28f
+                snackbar.show()
+            }
+        }
         binding.Resultados.visibility = View.GONE
         binding.Explicacion.visibility = View.VISIBLE
         tts = TextToSpeech(this, this)
@@ -73,6 +132,9 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
         convidats = intent.getBooleanExtra("convidats", false)
         if (!convidats) {
             alumne = intent.getSerializableExtra("Alumne") as Alumne
+            nivelXP = alumne.experiencia.Nivell
+            totalXP = alumne.experiencia.Total_xp
+            dailyXP = totalXP - xpNecesariaHastaNivel(nivelXP)
         }
         val layoutExplicacion = binding.Explicacion
         val layoutResultados = binding.Resultados
@@ -96,11 +158,25 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
         else if (numero.equals("1-2") || numero.equals("1-4")) {
             binding.textView.text = nivell + "\n\nResol les següents restes triant el resultat o el número que falta a l'espai en blanc"
         }
+        else if (numero.equals("1-5")) {
+            binding.textView.text = nivell + "\n\nResol les següents multiplicacions triant el resultat o el número que falta a l'espai en blanc"
+        }
+        else if (numero.equals("1-6")) {
+            binding.textView.text = nivell + "\n\nResol les següents divisions triant el resultat o el número que falta a l'espai en blanc"
+        }
+    }
+    private fun xpNecesariaHastaNivel(nivel: Int): Int {
+        var xp = 0
+        for (i in 1 until nivel) {
+            xp += (100 * Math.pow(i.toDouble(), 1.5)).toInt()
+        }
+        return xp
     }
     private fun xpToNextLevel(): Int = (100 * Math.pow(nivelXP.toDouble(), 1.5)).toInt()
     private fun addXp(amount: Int) {
         dailyXP += amount
         totalXP += amount
+        XP += amount
         while (dailyXP >= xpToNextLevel()) {
             dailyXP -= xpToNextLevel()
             nivelXP++
@@ -124,6 +200,7 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
     private fun playLevelUpAnimation() {
         val colors = intArrayOf(Color.RED, Color.GREEN, Color.YELLOW)
+        val centerX = binding.konfettiView.width / 2f
 
         binding.konfettiView.build()
             .addColors(*colors)
@@ -133,7 +210,10 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
             .setTimeToLive(2000L)
             .addShapes(Shape.RECT, Shape.CIRCLE)
             .addSizes(Size(12))
-            .setPosition(-50f, binding.konfettiView.width + 50f, -50f, -50f)
+            .setPosition(
+                centerX, centerX, // centro horizontal
+                0f, 0f             // parte superior
+            )
             .streamFor(300, 5000L)
     }
     override fun onInit(status: Int) {
@@ -156,9 +236,16 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
             val texto = "Resol les següents restes triant el resultat o el número que falta a l'espai en blanc"
             tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null, "descripcionID")
         }
+        else if (numero.equals("1-5")) {
+            val texto = "Resol les següents multiplicacions triant el resultat o el número que falta a l'espai en blanc"
+            tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null, "descripcionID")
+        }
+        else if (numero.equals("1-6")) {
+            val texto = "Resol les següents divisions triant el resultat o el número que falta a l'espai en blanc"
+            tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null, "descripcionID")
+        }
     }
     private fun AnunciarResultados() {
-        playLevelUpAnimation()
         if (respostesCorrectes>=5) {
             val texto = "Felicitats, has encertat un total de " + respostesCorrectes + " operacions i has desbloquejat el següent nivell"
             tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null, "resultatsID")
@@ -166,6 +253,14 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
         else {
             val texto = "Mala sort, nomes has encertat " + respostesCorrectes + " operacions i has d'encertar 5 operacions per desbloquejar el següent nivell"
             tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null, "resultatsID")
+        }
+        if (!convidats) {
+            if (respostesCorrectes==10) {
+                viewModel.experienciaUpdate(alumne.experiencia.id, nivelXP, totalXP, alumne.experiencia.Medalles+1)
+            }
+            else {
+                viewModel.experienciaUpdate(alumne.experiencia.id, nivelXP, totalXP, alumne.experiencia.Medalles)
+            }
         }
     }
     override fun onDestroy() {
@@ -276,6 +371,62 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                 val numero3 = numero1 - numero2
                 operacions[c][0] = numero1.toString()
                 operacions[c][1] = "-"
+                operacions[c][2] = numero2.toString()
+                operacions[c][3] = "="
+                operacions[c][4] = numero3.toString()
+
+                c++
+            }
+
+            novaOperacio()
+        }
+        else if (numero.equals("1-5")) {
+            binding.Explicacion.visibility = View.GONE
+            binding.world1level1.visibility = View.VISIBLE
+            val operacionesUnicas = mutableSetOf<Pair<Int, Int>>()
+            var c = 0
+
+            while (c < 10) {
+                val numero1 = Random.nextInt(0, 10)
+                val numero2 = Random.nextInt(0, 10)
+                val key = Pair(numero1, numero2)
+
+                if (key in operacionesUnicas) continue
+
+                operacionesUnicas.add(key)
+
+                val numero3 = numero1 * numero2
+                operacions[c][0] = numero1.toString()
+                operacions[c][1] = "*"
+                operacions[c][2] = numero2.toString()
+                operacions[c][3] = "="
+                operacions[c][4] = numero3.toString()
+
+                c++
+            }
+
+            novaOperacio()
+        }
+        else if (numero.equals("1-6")) {
+            binding.Explicacion.visibility = View.GONE
+            binding.world1level1.visibility = View.VISIBLE
+            val operacionesUnicas = mutableSetOf<Pair<Int, Int>>()
+            var c = 0
+
+            while (c < 10) {
+                val numero1 = Random.nextInt(0, 10)
+                val numero2 = Random.nextInt(1, 10)
+                val key = Pair(numero1, numero2)
+
+                if (key in operacionesUnicas) continue
+
+                if (numero1 % numero2 != 0) continue
+
+                operacionesUnicas.add(key)
+
+                val numero3 = numero1 / numero2
+                operacions[c][0] = numero1.toString()
+                operacions[c][1] = "/"
                 operacions[c][2] = numero2.toString()
                 operacions[c][3] = "="
                 operacions[c][4] = numero3.toString()
@@ -582,7 +733,7 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
     fun comprovarResultat(view: View) {
-        if (numero.equals("1-1") || numero.equals("1-2") || numero.equals("1-4")) {
+        if (numero.equals("1-1") || numero.equals("1-2") || numero.equals("1-4") || numero.equals("1-5") || numero.equals("1-6")) {
             comprovarResultatNovaOperacio()
         }
         else if (numero.equals("1-3")) {
@@ -593,6 +744,10 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
         lifecycleScope.launch {
             if (amagat == 1) {
                 if (binding.textView2.text.toString().toInt() == resposta) {
+                    playCorrectSound()
+                    if (!convidats) {
+                        addXp(xpPorAcierto)
+                    }
                     binding.textView2.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -621,6 +776,7 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                         novaOperacio()
                     }
                 } else {
+                    playIncorrectSound()
                     binding.textView2.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -658,6 +814,10 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
             } else if (amagat == 2) {
                 if (binding.textView4.text.toString().toInt() == resposta) {
+                    playCorrectSound()
+                    if (!convidats) {
+                        addXp(xpPorAcierto)
+                    }
                     binding.textView4.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -686,6 +846,7 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                         novaOperacio()
                     }
                 } else {
+                    playIncorrectSound()
                     binding.textView4.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -723,6 +884,10 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
             } else {
                 if (binding.textView6.text.toString().toInt() == resposta) {
+                    playCorrectSound()
+                    if (!convidats) {
+                        addXp(xpPorAcierto)
+                    }
                     binding.textView6.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -751,6 +916,7 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                         novaOperacio()
                     }
                 } else {
+                    playIncorrectSound()
                     binding.textView6.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -793,6 +959,10 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
         lifecycleScope.launch {
             if (amagat == 1) {
                 if (binding.textView2.text.toString().toInt() == resposta) {
+                    playCorrectSound()
+                    if (!convidats) {
+                        addXp(xpPorAcierto)
+                    }
                     binding.textView2.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -821,6 +991,7 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                         novaOperacio2()
                     }
                 } else {
+                    playIncorrectSound()
                     binding.textView2.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -858,6 +1029,10 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
             } else if (amagat == 2) {
                 if (binding.textView4.text.toString().toInt() == resposta) {
+                    playCorrectSound()
+                    if (!convidats) {
+                        addXp(xpPorAcierto)
+                    }
                     binding.textView4.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -886,6 +1061,7 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                         novaOperacio2()
                     }
                 } else {
+                    playIncorrectSound()
                     binding.textView4.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -923,6 +1099,10 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
             } else {
                 if (binding.textView6.text.toString().toInt() == resposta) {
+                    playCorrectSound()
+                    if (!convidats) {
+                        addXp(xpPorAcierto)
+                    }
                     binding.textView6.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -951,6 +1131,7 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
                         novaOperacio2()
                     }
                 } else {
+                    playIncorrectSound()
                     binding.textView6.setTextColor(
                         ContextCompat.getColor(
                             this@nivells,
@@ -993,6 +1174,9 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
         val i: Intent = Intent()
         i.putExtra("bloqueado", desbloqueado)
         i.putExtra("numero", numero)
+        if (!convidats) {
+            i.putExtra("alumne", alumne)
+        }
         setResult(Activity.RESULT_OK, i)
         finish()
     }

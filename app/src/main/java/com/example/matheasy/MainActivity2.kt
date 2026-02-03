@@ -53,6 +53,19 @@ class MainActivity2 : AppCompatActivity() {
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(binding.imageView)
+            if ((alumne.experiencia.Nivell>=5 && alumne.Nivell<10) || (alumne.experiencia.Medalles>=5 && alumne.experiencia.Medalles<10)) {
+                binding.borderView.setBackgroundResource(R.drawable.oig1)
+            }
+            else if ((alumne.experiencia.Nivell>=10 && alumne.Nivell<20) || (alumne.experiencia.Medalles>=10 && alumne.experiencia.Medalles<20)) {
+                binding.borderView.setBackgroundResource(R.drawable.oig2)
+            }
+            else if ((alumne.experiencia.Nivell>=20 && alumne.Nivell<40) || (alumne.experiencia.Medalles>=20 && alumne.experiencia.Medalles<40)) {
+                binding.borderView.setBackgroundResource(R.drawable.oig3)
+            }
+            else if (alumne.experiencia.Nivell>=40 || alumne.experiencia.Medalles>=40) {
+                binding.borderView.setBackgroundResource(R.drawable.oig4)
+            }
+            binding.buttonInformes.visibility = View.VISIBLE
             binding.buttonPerfil.visibility = View.VISIBLE
         }
     }
@@ -90,6 +103,11 @@ class MainActivity2 : AppCompatActivity() {
         }
         startActivity(i)
     }
+    fun informesClick(view: View) {
+        val i = Intent(this, Informes::class.java)
+        i.putExtra("Alumne", alumne)
+        startActivity(i)
+    }
     fun perfilClick(view: View) {
         val i = Intent(this, Perfil::class.java)
         i.putExtra("Alumne", alumne)
@@ -106,5 +124,17 @@ class MainActivity2 : AppCompatActivity() {
             .skipMemoryCache(true)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.imageView)
+        if ((alumne.experiencia.Nivell>=5 && alumne.Nivell<10) || (alumne.experiencia.Medalles>=5 && alumne.experiencia.Medalles<10)) {
+            binding.borderView.setBackgroundResource(R.drawable.oig1)
+        }
+        else if ((alumne.experiencia.Nivell>=10 && alumne.Nivell<20) || (alumne.experiencia.Medalles>=10 && alumne.experiencia.Medalles<20)) {
+            binding.borderView.setBackgroundResource(R.drawable.oig2)
+        }
+        else if ((alumne.experiencia.Nivell>=20 && alumne.Nivell<40) || (alumne.experiencia.Medalles>=20 && alumne.experiencia.Medalles<40)) {
+            binding.borderView.setBackgroundResource(R.drawable.oig3)
+        }
+        else if (alumne.experiencia.Nivell>=40 || alumne.experiencia.Medalles>=40) {
+            binding.borderView.setBackgroundResource(R.drawable.oig4)
+        }
     }
 }

@@ -10,5 +10,6 @@ data class Alumne (
     var ProfilePicturePath: String,
     var Nom_Usuari: String,
     var Curs: String,
-    var Experiencia: Int = 0,
+    var Nivell: Int,
+    var experiencia: Experiencia
 ) : Serializable

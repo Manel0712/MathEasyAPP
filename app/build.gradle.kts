@@ -60,6 +60,10 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx) // viewModels()
     implementation(libs.glide.transformations) // solo implement
     implementation(libs.konfetti)
+    implementation(libs.rendering)
+    implementation(libs.sceneform.ux)
+    implementation(libs.assets)
+    implementation(libs.arcore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

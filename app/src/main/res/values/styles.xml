@@ -18,6 +18,9 @@
     <style name="textButtonPractica" parent="Button">
         <item name="android:text">@string/practicaButtonText</item>
     </style>
+    <style name="textButtonInformes" parent="Button">
+        <item name="android:text">@string/informesButtonText</item>
+    </style>
     <style name="textButtonPerfil" parent="Button">
         <item name="android:text">@string/perfilButtonText</item>
     </style>

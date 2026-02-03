@@ -40,7 +40,7 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
 
     private var isPanelOpen = false
     private var panelWidth = 0f
-    private var niveles = getLocations()
+    private lateinit var niveles: List<LocationItem>
     private lateinit var alumne: Alumne
     var convidats = false
 
@@ -56,6 +56,13 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        convidats = intent.getBooleanExtra("convidats", false)
+        if (!convidats) {
+            alumne = intent.getSerializableExtra("Alumne") as Alumne
+        }
+
+        niveles = getLocations()
 
         val appInfo = packageManager.getApplicationInfo(
             packageName,
@@ -82,11 +89,6 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
             panelWidth = binding.rvLocations.width.toFloat()
             abrirPanel()
         }
-
-        convidats = intent.getBooleanExtra("convidats", false)
-        if (!convidats) {
-            alumne = intent.getSerializableExtra("Alumne") as Alumne
-        }
     }
 
     override fun onMapReady(mapaGoogle: GoogleMap) {
@@ -109,6 +111,9 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
     var resultLauncherConfiguration = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
     { result ->
         val data: Intent? = result.data
+        if (!convidats) {
+            alumne = data!!.getSerializableExtra("alumne") as Alumne
+        }
         if (data!!.getStringExtra("numero").toString().equals("1-1")) {
             if (data!!.getBooleanExtra("bloqueado", false)) {
                 mapa.clear()
@@ -119,7 +124,7 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                     cerrarPanel()
                 }
                 binding.rvLocations.adapter!!.notifyDataSetChanged()
-                for (c in 0 until 4) {
+                for (c in 0 until 6) {
                     if (!niveles[c].bloqueado) {
                         marcarUbicacion(niveles[c])
                     }
@@ -136,7 +141,7 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                     cerrarPanel()
                 }
                 binding.rvLocations.adapter!!.notifyDataSetChanged()
-                for (c in 0 until 4) {
+                for (c in 0 until 6) {
                     if (!niveles[c].bloqueado) {
                         marcarUbicacion(niveles[c])
                     }
@@ -153,7 +158,7 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                     cerrarPanel()
                 }
                 binding.rvLocations.adapter!!.notifyDataSetChanged()
-                for (c in 0 until 4) {
+                for (c in 0 until 6) {
                     if (!niveles[c].bloqueado) {
                         marcarUbicacion(niveles[c])
                     }
@@ -162,30 +167,79 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
         }
         else if (data.getStringExtra("numero").toString().equals("1-4")) {
             if (data!!.getBooleanExtra("bloqueado", false)) {
-                mapa.clear()
-                for (c in 0 until 2) {
+                if (convidats) {
+                    mapa.clear()
+                    for (c in 0 until 4) {
+                        niveles[3].completado = true
+                        if (!niveles[c].bloqueado) {
+                            marcarUbicacion(niveles[c])
+                        }
+                    }
+                    mostrarDialogoAceptar(this, "Si vols seguir jugant has de registrar-te")
+                }
+                else {
+                    mapa.clear()
+                    niveles[4].bloqueado = false
                     niveles[3].completado = true
-                    if (!niveles[c].bloqueado) {
-                        marcarUbicacion(niveles[c])
+                    binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
+                        marcarUbicacion(location)
+                        cerrarPanel()
+                    }
+                    binding.rvLocations.adapter!!.notifyDataSetChanged()
+                    for (c in 0 until 6) {
+                        if (!niveles[c].bloqueado) {
+                            marcarUbicacion(niveles[c])
+                        }
                     }
                 }
-                mostrarDialogoAceptar(this, "Si vols seguir jugant has de registrar-te")
             }
-            /* if (data!!.getBooleanExtra("bloqueado", false)) {
+        }
+        else if (data.getStringExtra("numero").toString().equals("1-5")) {
+            if (data!!.getBooleanExtra("bloqueado", false)) {
                 mapa.clear()
-                niveles[1].bloqueado = false
-                niveles[0].completado = true
-                binding.rvLocations.adapter = LocationAdapter(niveles) { location ->
+                niveles[5].bloqueado = false
+                niveles[4].completado = true
+                binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
                     marcarUbicacion(location)
                     cerrarPanel()
                 }
                 binding.rvLocations.adapter!!.notifyDataSetChanged()
-                for (c in 0 until 2) {
+                for (c in 0 until 6) {
                     if (!niveles[c].bloqueado) {
                         marcarUbicacion(niveles[c])
                     }
                 }
-            } */
+            }
+        }
+        else if (data.getStringExtra("numero").toString().equals("1-6")) {
+            if (data!!.getBooleanExtra("bloqueado", false)) {
+                /*mapa.clear()
+                niveles[6].bloqueado = false
+                niveles[5].completado = true
+                binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
+                    marcarUbicacion(location)
+                    cerrarPanel()
+                }
+                binding.rvLocations.adapter!!.notifyDataSetChanged()
+                for (c in 0 until 5) {
+                    if (!niveles[c].bloqueado) {
+                        marcarUbicacion(niveles[c])
+                    }
+                }*/
+                mapa.clear()
+                for (c in 0 until 5) {
+                    niveles[5].completado = true
+                    binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
+                        marcarUbicacion(location)
+                        cerrarPanel()
+                    }
+                    binding.rvLocations.adapter!!.notifyDataSetChanged()
+                    if (!niveles[c].bloqueado) {
+                        marcarUbicacion(niveles[c])
+                    }
+                }
+                mostrarDialogoAceptar(this, "Mes nivells properament")
+            }
         }
     }
 
@@ -262,6 +316,11 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                 MarkerOptions().position(latLng).anchor(0.5f, 1f).icon(markerIconFromDrawable(this,R.drawable.ic_marker))
             )
         }
+        else if (location.numero.equals("1-6")) {
+            marker = mapa.addMarker(
+                MarkerOptions().position(latLng).anchor(0.5f, 1f)
+            )
+        }
         else {
             marker = mapa.addMarker(
                 MarkerOptions().position(latLng).anchor(0.5f, 1f)
@@ -284,11 +343,38 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun getLocations(): List<LocationItem> {
-        return listOf(
-            LocationItem("Mataró", 41.5354924, 2.4456584, "1-1", "p1010255", false),
-            LocationItem("Ocata", 41.4831877, 2.3317447, "1-2", "aldi_el_masnou"),
-            LocationItem("Badalona", 41.4490912, 2.2423281, "1-3", "estacio_de_badalona_pompeu_fabra"),
-            LocationItem("Hospitalet", 41.3554322, 2.1246428, "1-4", "mwc_barcelona")
-        )
+        if (convidats) {
+            return listOf(
+                LocationItem("Mataró", 41.5354924, 2.4456584, "1-1", "p1010255", false),
+                LocationItem("Ocata", 41.4831877, 2.3317447, "1-2", "aldi_el_masnou"),
+                LocationItem("Badalona", 41.4490912, 2.2423281, "1-3", "estacio_de_badalona_pompeu_fabra"),
+                LocationItem("Hospitalet", 41.3554322, 2.1246428, "1-4", "mwc_barcelona"),
+                LocationItem("Barcelona-Sud", 41.3898803, 2.1153956, "1-5", "marenostrum_supercomputador_bsc_barcelona"),
+                LocationItem("Barcelona-Centre", 41.3871144, 2.1684571, "1-6", "corteinglesplacacatalunya")
+            )
+        }
+        else {
+            var locations = listOf(
+                LocationItem("Mataró", 41.5354924, 2.4456584, "1-1", "p1010255"),
+                LocationItem("Ocata", 41.4831877, 2.3317447, "1-2", "aldi_el_masnou"),
+                LocationItem("Badalona", 41.4490912, 2.2423281, "1-3", "estacio_de_badalona_pompeu_fabra"),
+                LocationItem("Hospitalet", 41.3554322, 2.1246428, "1-4", "mwc_barcelona"),
+                LocationItem("Barcelona-Sud", 41.3898803, 2.1153956, "1-5", "marenostrum_supercomputador_bsc_barcelona"),
+                LocationItem("Barcelona-Centre", 41.3871144, 2.1684571, "1-6", "corteinglesplacacatalunya")
+            )
+            for (c in 0 .. alumne.Nivell) {
+                if (c==0) {
+                    locations[c].bloqueado = false
+                }
+                else if (c != locations.size) {
+                    locations[c-1].completado = true
+                    locations[c].bloqueado = false
+                }
+                else {
+                    locations[c-1].completado = true
+                }
+            }
+            return locations
+        }
     }
 }
