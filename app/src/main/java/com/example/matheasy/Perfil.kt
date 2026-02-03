@@ -63,11 +63,23 @@ class Perfil : AppCompatActivity() {
                     .skipMemoryCache(true)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(binding.imageView)
+                if ((alumne.experiencia.Nivell>=5 && alumne.Nivell<10) || (alumne.experiencia.Medalles>=5 && alumne.experiencia.Medalles<10)) {
+                    binding.borderView.setBackgroundResource(R.drawable.oig1)
+                }
+                else if ((alumne.experiencia.Nivell>=10 && alumne.Nivell<20) || (alumne.experiencia.Medalles>=10 && alumne.experiencia.Medalles<20)) {
+                    binding.borderView.setBackgroundResource(R.drawable.oig2)
+                }
+                else if ((alumne.experiencia.Nivell>=20 && alumne.Nivell<40) || (alumne.experiencia.Medalles>=20 && alumne.experiencia.Medalles<40)) {
+                    binding.borderView.setBackgroundResource(R.drawable.oig3)
+                }
+                else if (alumne.experiencia.Nivell>=40 || alumne.experiencia.Medalles>=40) {
+                    binding.borderView.setBackgroundResource(R.drawable.oig4)
+                }
             }
         }
         viewModel.profilePicture.observe(this) { profilePicture ->
             if (profilePicture != null) {
-                viewModel.edit(alumne.id, binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), profilePicture.path, binding.textInputEditText6.text.toString(), 0)
+                viewModel.edit(alumne.id, binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), profilePicture.path, binding.textInputEditText6.text.toString(), alumne.experiencia.id)
             }
         }
         viewModel.error.observe(this) {
@@ -98,6 +110,18 @@ class Perfil : AppCompatActivity() {
             .skipMemoryCache(true)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.imageView)
+        if ((alumne.experiencia.Nivell>=5 && alumne.Nivell<10) || (alumne.experiencia.Medalles>=5 && alumne.experiencia.Medalles<10)) {
+            binding.borderView.setBackgroundResource(R.drawable.oig1)
+        }
+        else if ((alumne.experiencia.Nivell>=10 && alumne.Nivell<20) || (alumne.experiencia.Medalles>=10 && alumne.experiencia.Medalles<20)) {
+            binding.borderView.setBackgroundResource(R.drawable.oig2)
+        }
+        else if ((alumne.experiencia.Nivell>=20 && alumne.Nivell<40) || (alumne.experiencia.Medalles>=20 && alumne.experiencia.Medalles<40)) {
+            binding.borderView.setBackgroundResource(R.drawable.oig3)
+        }
+        else if (alumne.experiencia.Nivell>=40 || alumne.experiencia.Medalles>=40) {
+            binding.borderView.setBackgroundResource(R.drawable.oig4)
+        }
         base64 = ""
         extension = ""
     }
@@ -124,7 +148,7 @@ class Perfil : AppCompatActivity() {
         return MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType) ?: "jpg"
     }
     fun saveClick(view: View) {
-        viewModel.edit(alumne.id, binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), alumne.ProfilePicturePath, binding.textInputEditText6.text.toString(), 0)
+        viewModel.edit(alumne.id, binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), alumne.ProfilePicturePath, binding.textInputEditText6.text.toString(), alumne.experiencia.id)
     }
     fun closeClick(view: View) {
         val i = Intent(this, MainActivity2::class.java)

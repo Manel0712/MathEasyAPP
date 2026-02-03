@@ -7,42 +7,74 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="88dp"
-        android:scaleType="centerCrop"
+    <FrameLayout
+        android:id="@+id/frameImage"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/Circle"
-        tools:srcCompat="@tools:sample/avatars"
-        android:backgroundTint="@android:color/white" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="147dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/white"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/Circle"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/borderView"
+            android:layout_width="250dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY" />
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/buttonLoggin"
         style="@style/textButtonPractica"
         android:layout_width="300dp"
         android:layout_height="143dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="44dp"
         android:onClick="practicaClick"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/frameImage" />
+
+    <Button
+        android:id="@+id/buttonInformes"
+        style="@style/textButtonInformes"
+        android:layout_width="300dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="8dp"
+        android:onClick="informesClick"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLoggin" />
 
     <Button
         android:id="@+id/buttonPerfil"
         style="@style/textButtonPerfil"
         android:layout_width="300dp"
         android:layout_height="143dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="9dp"
         android:onClick="perfilClick"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLoggin" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonInformes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,10 @@ lifecycle = "2.6.2"
 glide-transformations = "4.3.0"
 secrets = "2.0.0"
 konfetti = "1.2.5"
+rendering = "1.17.1"
+sceneformUx = "1.17.1"
+assets = "1.17.1"
+arcore = "1.45.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +46,10 @@ lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.r
 lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version = "lifecycle" }
 glide-transformations = { group = "jp.wasabeef", name = "glide-transformations", version.ref = "glide-transformations" }
 konfetti = { group = "nl.dionsegijn", name = "konfetti", version.ref = "konfetti" }
+rendering = { group = "com.google.ar.sceneform", name = "rendering", version.ref = "rendering" }
+sceneform-ux = { group = "com.google.ar.sceneform.ux", name = "sceneform-ux", version.ref = "sceneformUx" }
+assets = { group = "com.google.ar.sceneform", name = "assets", version.ref = "assets" }
+arcore = { group = "com.google.ar", name = "core", version.ref = "arcore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
