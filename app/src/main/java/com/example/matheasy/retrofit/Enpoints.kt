@@ -2,16 +2,21 @@ package com.example.matheasy.retrofit
 
 import android.R
 import com.example.matheasy.models.Alumne
+import com.example.matheasy.models.Resposta
 import com.example.matheasy.models.DownloadBase64Image
 import com.example.matheasy.models.Experiencia
 import com.example.matheasy.models.ImageUpload
 import com.example.matheasy.models.Informe
+import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 
 interface Enpoints {
     @POST("api/loggin")
-    suspend fun loggin(@Query("Nom_Usuari") Usuari: String, @Query("Password") Password: String): Response<List<Alumne>>
+    suspend fun loggin(@Query("Nom_Usuari") Usuari: String, @Query("Password") Password: String): Response<Resposta>
+
+    @POST("api/tokenLoggin")
+    suspend fun tokenLoggin(@Query("token") Token: String): Response<List<Alumne>>
 
     @POST("api/perfilImage")
     suspend fun perfilImageUpload(@Body body: DownloadBase64Image): Response<ImageUpload>

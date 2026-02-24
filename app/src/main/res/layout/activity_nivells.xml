@@ -202,7 +202,326 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
+        <Button
+            android:id="@+id/buttonCerrar2"
+            style="@style/textButtonClose"
+            android:layout_width="300dp"
+            android:layout_height="71.5dp"
+            android:layout_marginTop="12dp"
+            android:onClick="abandonar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.393"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/world1level5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="297dp"
+            android:layout_height="327dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            app:srcCompat="@drawable/_835165"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="334dp" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="175dp"
+            android:layout_marginTop="700dp"
+            android:text="TextView"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/buttonComprovar4"
+            style="@style/textButtonComprovar"
+            android:layout_width="300dp"
+            android:layout_height="71.5dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="750dp"
+            android:onClick="comprovarMoneder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.405"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <Button
+            android:id="@+id/buttonCerrar4"
+            style="@style/textButtonClose"
+            android:layout_width="300dp"
+            android:layout_height="71.5dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="825dp"
+            android:onClick="abandonar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.393"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/world1level6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <!-- Left TextViews -->
+        <TextView
+            android:id="@+id/textLeft1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="100dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textLeft2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textLeft1"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textLeft3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textLeft2"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <!-- Repetir hasta textLeft10 -->
+        <TextView
+            android:id="@+id/textLeft4"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textLeft3"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textLeft5"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textLeft4"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textLeft6"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textLeft5"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textLeft7"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textLeft6"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textLeft8"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textLeft7"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textLeft9"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textLeft8"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textLeft10"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textLeft9"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <!-- Right TextViews -->
+        <TextView
+            android:id="@+id/textRight1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textRight2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textRight1"
+            android:layout_alignEnd="@id/textRight1"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <!-- Repetir hasta textRight10 -->
+        <TextView
+            android:id="@+id/textRight3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textRight2"
+            android:layout_alignEnd="@id/textRight1"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textRight4"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textRight3"
+            android:layout_alignEnd="@id/textRight1"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textRight5"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textRight4"
+            android:layout_alignEnd="@id/textRight1"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textRight6"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textRight5"
+            android:layout_alignEnd="@id/textRight1"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textRight7"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textRight6"
+            android:layout_alignEnd="@id/textRight1"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textRight8"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textRight7"
+            android:layout_alignEnd="@id/textRight1"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textRight9"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textRight8"
+            android:layout_alignEnd="@id/textRight1"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textRight10"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/textRight9"
+            android:layout_alignEnd="@id/textRight1"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <!-- LineView encima de todo -->
+
+        <!-- Botón Comprobar al fondo -->
+
+        <com.example.matheasy.LineView
+            android:id="@+id/linesView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btnComprovar"
+            style="@style/textButtonComprovar"
+            android:layout_width="283dp"
+            android:layout_height="112dp"
+            android:layout_below="@+id/textLeft10"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="62dp"
+            android:onClick="comprobarTodas" />
+
+        <Button
+            android:id="@+id/buttonCerrar3"
+            style="@style/textButtonClose"
+            android:layout_width="279dp"
+            android:layout_height="57dp"
+            android:layout_below="@+id/textLeft10"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="59dp"
+            android:layout_marginTop="133dp"
+            android:layout_marginEnd="65dp"
+            android:gravity="center"
+            android:onClick="abandonar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.393"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Resultados"

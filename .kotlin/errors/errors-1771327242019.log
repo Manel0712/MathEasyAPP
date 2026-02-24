@@ -1,0 +1,206 @@
+kotlin version: 2.2.0
+error message: java.lang.RuntimeException: Exception while generating code for:
+FUN name:dibujarRuta3D visibility:private modality:FINAL returnType:kotlin.Unit
+  VALUE_PARAMETER kind:DispatchReceiver name:<this> index:0 type:com.example.matheasy.Mapa
+  VALUE_PARAMETER kind:Regular name:ruta3D index:1 type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude>
+  BLOCK_BODY
+    BLOCK type=kotlin.Unit origin=FOR_LOOP
+      COMPOSITE type=kotlin.Unit origin=null
+        VAR FOR_LOOP_VARIABLE name:i type:kotlin.Int [var]
+          CONST Int type=kotlin.Int value=1
+        VAR IR_TEMPORARY_VARIABLE name:last type:kotlin.Int [val]
+          CALL 'public abstract fun <get-size> (): kotlin.Int declared in kotlin.collections.List' type=kotlin.Int origin=GET_PROPERTY
+            ARG <this>: GET_VAR 'ruta3D: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+      DO_WHILE label=Mapa$dibujarRuta3D2 origin=DO_WHILE_COUNTER_LOOP
+        body: COMPOSITE type=kotlin.Unit origin=FOR_LOOP_INNER_WHILE
+          COMPOSITE type=kotlin.Unit origin=FOR_LOOP_NEXT
+            WHEN type=kotlin.Unit origin=null
+              BRANCH
+                if: CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                  ARG <this>: CALL 'public final fun less (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                    ARG arg0: GET_VAR 'var i: kotlin.Int [var] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.Int origin=null
+                    ARG arg1: GET_VAR 'val last: kotlin.Int [val] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.Int origin=null
+                then: BREAK label=null loop.label=Mapa$dibujarRuta3D2
+          COMPOSITE type=kotlin.Unit origin=null
+            BLOCK type=com.google.android.gms.maps3d.model.Polyline origin=null
+              VAR name:segment type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+                CALL 'public final fun listOf <T> (vararg elements: T of kotlin.collections.CollectionsKt.listOf): kotlin.collections.List<T of kotlin.collections.CollectionsKt.listOf> declared in kotlin.collections.CollectionsKt' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                  TYPE_ARG T: com.google.android.gms.maps3d.model.LatLngAltitude
+                  ARG elements: BLOCK type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                    VAR IR_TEMPORARY_VARIABLE name:tmp0 type:kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+                      CALL 'public final fun arrayOfNulls <T> (size: kotlin.Int): kotlin.Array<T of kotlin.arrayOfNulls?> declared in kotlin' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                        TYPE_ARG T: com.google.android.gms.maps3d.model.LatLngAltitude
+                        ARG size: CONST Int type=kotlin.Int value=2
+                    CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+                      ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                      ARG index: CONST Int type=kotlin.Int value=0
+                      ARG value: CALL 'public abstract fun get (index: kotlin.Int): E of kotlin.collections.List [operator] declared in kotlin.collections.List' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=GET_ARRAY_ELEMENT
+                        ARG <this>: GET_VAR 'ruta3D: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                        ARG index: CALL 'public final fun minus (other: kotlin.Int): kotlin.Int [operator] declared in kotlin.Int' type=kotlin.Int origin=MINUS
+                          ARG <this>: GET_VAR 'var i: kotlin.Int [var] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.Int origin=null
+                          ARG other: CONST Int type=kotlin.Int value=1
+                    CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+                      ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                      ARG index: CONST Int type=kotlin.Int value=1
+                      ARG value: CALL 'public abstract fun get (index: kotlin.Int): E of kotlin.collections.List [operator] declared in kotlin.collections.List' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=GET_ARRAY_ELEMENT
+                        ARG <this>: GET_VAR 'ruta3D: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                        ARG index: GET_VAR 'var i: kotlin.Int [var] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.Int origin=null
+                    GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+              CALL 'public final fun addPolyline (polylineOptions: com.google.android.gms.maps3d.model.PolylineOptions): com.google.android.gms.maps3d.model.Polyline declared in com.google.android.gms.maps3d.GoogleMap3D' type=com.google.android.gms.maps3d.model.Polyline origin=null
+                ARG <this>: BLOCK type=com.google.android.gms.maps3d.GoogleMap3D origin=FOLDED_ELVIS
+                  WHEN type=com.google.android.gms.maps3d.GoogleMap3D origin=FOLDED_ELVIS
+                    BRANCH
+                      if: COMPOSITE type=kotlin.Boolean origin=null
+                        VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.google.android.gms.maps3d.GoogleMap3D? [val]
+                          GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:mapa3D type:com.google.android.gms.maps3d.GoogleMap3D? visibility:private' type=com.google.android.gms.maps3d.GoogleMap3D? origin=null
+                            receiver: GET_VAR '<this>: com.example.matheasy.Mapa declared in com.example.matheasy.Mapa.dibujarRuta3D' type=com.example.matheasy.Mapa origin=IMPLICIT_ARGUMENT
+                        CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                          ARG <this>: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                            ARG arg0: GET_VAR 'val tmp0: com.google.android.gms.maps3d.GoogleMap3D? [val] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=com.google.android.gms.maps3d.GoogleMap3D? origin=null
+                            ARG arg1: CONST Null type=kotlin.Nothing? value=null
+                      then: GET_VAR 'val tmp0: com.google.android.gms.maps3d.GoogleMap3D? [val] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=com.google.android.gms.maps3d.GoogleMap3D? origin=null
+                    BRANCH
+                      if: CONST Boolean type=kotlin.Boolean value=true
+                      then: BLOCK type=kotlin.Unit origin=null
+                        CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                          ARG propertyName: CONST String type=kotlin.String value="mapa3D"
+                ARG polylineOptions: CALL 'public final fun apply <T> (<this>: T of kotlin.StandardKt.apply, block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.google.android.gms.maps3d.model.PolylineOptions origin=null
+                  TYPE_ARG T: com.google.android.gms.maps3d.model.PolylineOptions
+                  ARG <this>: CONSTRUCTOR_CALL 'public constructor <init> () declared in com.google.android.gms.maps3d.model.PolylineOptions' type=com.google.android.gms.maps3d.model.PolylineOptions origin=null
+                  ARG block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.PolylineOptions, kotlin.Unit> origin=LAMBDA
+                    COMPOSITE type=kotlin.Unit origin=null
+                    FUNCTION_REFERENCE 'private final fun dibujarRuta3D$lambda$12 ($this$apply: com.google.android.gms.maps3d.model.PolylineOptions): kotlin.Unit declared in com.example.matheasy.Mapa' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.PolylineOptions, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+            COMPOSITE type=kotlin.Unit origin=null
+        condition: COMPOSITE type=kotlin.Boolean origin=null
+          CALL 'public final fun <int-prefix-incr-decr> (value: kotlin.Int, delta: kotlin.Int): kotlin.Int declared in kotlin.jvm.internal' type=kotlin.Int origin=null
+            ARG value: GET_VAR 'var i: kotlin.Int [var] declared in com.example.matheasy.Mapa.dibujarRuta3D' type=kotlin.Int origin=null
+            ARG delta: CONST Int type=kotlin.Int value=1
+          CONST Boolean type=kotlin.Boolean value=true
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:50)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate$default(FunctionCodegen.kt:43)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethodNode(ClassCodegen.kt:422)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethod(ClassCodegen.kt:439)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:164)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.generateFile(JvmIrCodegenFactory.kt:419)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.invokeCodegen(JvmIrCodegenFactory.kt:388)
+	at org.jetbrains.kotlin.cli.jvm.compiler.KotlinToJVMBytecodeCompiler.runCodegen$cli(KotlinToJVMBytecodeCompiler.kt:432)
+	at org.jetbrains.kotlin.cli.pipeline.jvm.JvmBackendPipelinePhase.executePhase(JvmBackendPipelinePhase.kt:95)
+	at org.jetbrains.kotlin.cli.pipeline.jvm.JvmBackendPipelinePhase.executePhase(JvmBackendPipelinePhase.kt:36)
+	at org.jetbrains.kotlin.cli.pipeline.jvm.JvmBackendPipelinePhase.executePhase(JvmBackendPipelinePhase.kt:29)
+	at org.jetbrains.kotlin.cli.pipeline.PipelinePhase.phaseBody(PipelinePhase.kt:68)
+	at org.jetbrains.kotlin.cli.pipeline.PipelinePhase.phaseBody(PipelinePhase.kt:58)
+	at org.jetbrains.kotlin.config.phaser.NamedCompilerPhase.invoke(CompilerPhase.kt:102)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:22)
+	at org.jetbrains.kotlin.config.phaser.CompilerPhaseKt.invokeToplevel(CompilerPhase.kt:53)
+	at org.jetbrains.kotlin.cli.pipeline.AbstractCliPipeline.runPhasedPipeline(AbstractCliPipeline.kt:109)
+	at org.jetbrains.kotlin.cli.pipeline.AbstractCliPipeline.execute(AbstractCliPipeline.kt:68)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecutePhased(K2JVMCompiler.kt:78)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecutePhased(K2JVMCompiler.kt:44)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:90)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.exec(CLICompiler.kt:352)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunnerBase.runCompiler(IncrementalJvmCompilerRunnerBase.kt:175)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunnerBase.runCompiler(IncrementalJvmCompilerRunnerBase.kt:38)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.doCompile(IncrementalCompilerRunner.kt:504)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileImpl(IncrementalCompilerRunner.kt:421)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally$lambda$10$compile(IncrementalCompilerRunner.kt:254)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally(IncrementalCompilerRunner.kt:272)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compile(IncrementalCompilerRunner.kt:124)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.execIncrementalCompiler(CompileServiceImpl.kt:679)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.access$execIncrementalCompiler(CompileServiceImpl.kt:93)
+	at org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(CompileServiceImpl.kt:1806)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN INLINE_LAMBDA name:dibujarRuta3D$lambda$12 visibility:private modality:FINAL returnType:kotlin.Unit
+  VALUE_PARAMETER kind:ExtensionReceiver name:$this$apply index:0 type:com.google.android.gms.maps3d.model.PolylineOptions
+  BLOCK_BODY
+    VAR name:$i$a$-apply-Mapa$dibujarRuta3D$1 type:kotlin.Int [val]
+      CONST Int type=kotlin.Int value=0
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:width type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+      value: CONST Int type=kotlin.Int value=6
+    CALL 'public open fun setAltitudeMode (p0: kotlin.Int): kotlin.Unit declared in com.google.android.gms.maps3d.model.PolylineOptions' type=kotlin.Unit origin=EQ
+      ARG <this>: GET_VAR '$this$apply: com.google.android.gms.maps3d.model.PolylineOptions declared in com.example.matheasy.Mapa.dibujarRuta3D$lambda$12' type=com.google.android.gms.maps3d.model.PolylineOptions origin=null
+      ARG p0: CONST Int type=kotlin.Int value=1
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:50)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrSourceCompilerForInline.generateLambdaBody(IrSourceCompilerForInline.kt:72)
+	at org.jetbrains.kotlin.codegen.inline.ExpressionLambda.generateLambdaBody(LambdaInfo.kt:72)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrInlineCodegen.genValueAndPut(IrInlineCodegen.kt:122)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:564)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:577)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.gen(ExpressionCodegen.kt:214)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrCallGenerator.genValueAndPut(IrCallGenerator.kt:48)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:564)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:577)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:541)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.visitors.IrVisitor.visitBlock(IrVisitor.kt:122)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:413)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrBlock.accept(IrBlock.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:541)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.visitors.IrVisitor.visitComposite(IrVisitor.kt:125)
+	at org.jetbrains.kotlin.ir.expressions.IrComposite.accept(IrComposite.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:541)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.visitors.IrVisitor.visitComposite(IrVisitor.kt:125)
+	at org.jetbrains.kotlin.ir.expressions.IrComposite.accept(IrComposite.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitDoWhileLoop(ExpressionCodegen.kt:1186)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitDoWhileLoop(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrDoWhileLoop.accept(IrDoWhileLoop.kt:19)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:541)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.visitors.IrVisitor.visitBlock(IrVisitor.kt:122)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:413)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrBlock.accept(IrBlock.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:532)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:233)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:126)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	... 46 more
+Caused by: java.lang.AssertionError: access of const val: SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:width type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+  value: CONST Int type=kotlin.Int value=6
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:807)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.visitors.IrVisitor.visitSetField(IrVisitor.kt:215)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:858)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrSetField.accept(IrSetField.kt:21)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:532)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:233)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:126)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	... 93 more
+
+

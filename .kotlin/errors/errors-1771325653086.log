@@ -1,0 +1,735 @@
+kotlin version: 2.2.0
+error message: java.lang.RuntimeException: Exception while generating code for:
+FUN name:onMap3DViewReady visibility:public modality:OPEN returnType:kotlin.Unit
+  VALUE_PARAMETER kind:DispatchReceiver name:<this> index:0 type:com.example.matheasy.Mapa
+  VALUE_PARAMETER kind:Regular name:googleMap3D index:1 type:com.google.android.gms.maps3d.GoogleMap3D
+  overridden:
+    public abstract fun onMap3DViewReady (googleMap3D: com.google.android.gms.maps3d.GoogleMap3D): kotlin.Unit declared in com.google.android.gms.maps3d.OnMap3DViewReadyCallback
+  BLOCK_BODY
+    SET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:mapa3D type:com.google.android.gms.maps3d.GoogleMap3D? visibility:private' type=kotlin.Unit origin=null
+      receiver: GET_VAR '<this>: com.example.matheasy.Mapa declared in com.example.matheasy.Mapa.onMap3DViewReady' type=com.example.matheasy.Mapa origin=null
+      value: GET_VAR 'googleMap3D: com.google.android.gms.maps3d.GoogleMap3D declared in com.example.matheasy.Mapa.onMap3DViewReady' type=com.google.android.gms.maps3d.GoogleMap3D origin=null
+    CALL 'public final fun setCamera (camera: com.google.android.gms.maps3d.model.Camera): kotlin.Unit declared in com.google.android.gms.maps3d.GoogleMap3D' type=kotlin.Unit origin=null
+      ARG <this>: GET_VAR 'googleMap3D: com.google.android.gms.maps3d.GoogleMap3D declared in com.example.matheasy.Mapa.onMap3DViewReady' type=com.google.android.gms.maps3d.GoogleMap3D origin=null
+      ARG camera: CALL 'public final fun camera (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.Camera, kotlin.Unit>): com.google.android.gms.maps3d.model.Camera declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.Camera origin=null
+        ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.Camera, kotlin.Unit> origin=LAMBDA
+          COMPOSITE type=kotlin.Unit origin=null
+          CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.Camera, kotlin.Unit> origin=null
+            TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.Camera, kotlin.Unit>
+            ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.Camera, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.Camera, kotlin.Unit> origin=null
+            ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+              ARG tag: CONST Int type=kotlin.Int value=6
+              ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+              ARG name: CONST String type=kotlin.String value="metafactory"
+              ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+              ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+            ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+              CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+              RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$6 ($this$camera: com.google.android.gms.maps3d.model.Camera): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+              CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.Camera): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+    VAR name:movingMarker type:com.google.android.gms.maps3d.model.Marker? [val]
+      CALL 'public final fun addMarker (options: com.google.android.gms.maps3d.model.MarkerOptions): com.google.android.gms.maps3d.model.Marker? declared in com.google.android.gms.maps3d.GoogleMap3D' type=com.google.android.gms.maps3d.model.Marker? origin=null
+        ARG <this>: GET_VAR 'googleMap3D: com.google.android.gms.maps3d.GoogleMap3D declared in com.example.matheasy.Mapa.onMap3DViewReady' type=com.google.android.gms.maps3d.GoogleMap3D origin=null
+        ARG options: CALL 'public final fun markerOptions (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.MarkerOptions, kotlin.Unit>): com.google.android.gms.maps3d.model.MarkerOptions declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.MarkerOptions origin=null
+          ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.MarkerOptions, kotlin.Unit> origin=LAMBDA
+            COMPOSITE type=kotlin.Unit origin=null
+            CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.MarkerOptions, kotlin.Unit> origin=null
+              TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.MarkerOptions, kotlin.Unit>
+              ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.MarkerOptions, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.MarkerOptions, kotlin.Unit> origin=null
+              ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                ARG tag: CONST Int type=kotlin.Int value=6
+                ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                ARG name: CONST String type=kotlin.String value="metafactory"
+                ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+              ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                  ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$8 ($this$markerOptions: com.google.android.gms.maps3d.model.MarkerOptions): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                  ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.MarkerOptions): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+    VAR name:ruta type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+      CALL 'public final fun listOf <T> (vararg elements: T of kotlin.collections.CollectionsKt.listOf): kotlin.collections.List<T of kotlin.collections.CollectionsKt.listOf> declared in kotlin.collections.CollectionsKt' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+        TYPE_ARG T: com.google.android.gms.maps3d.model.LatLngAltitude
+        ARG elements: BLOCK type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+          VAR IR_TEMPORARY_VARIABLE name:tmp0 type:kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+            CALL 'public final fun arrayOfNulls <T> (size: kotlin.Int): kotlin.Array<T of kotlin.arrayOfNulls?> declared in kotlin' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+              TYPE_ARG T: com.google.android.gms.maps3d.model.LatLngAltitude
+              ARG size: CONST Int type=kotlin.Int value=12
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=0
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$9 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=1
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$10 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=2
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$11 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=3
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$12 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=4
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$13 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=5
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$14 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=6
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$15 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=7
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$16 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=8
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$17 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=9
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$18 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=10
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$19 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=11
+            ARG value: CALL 'public final fun latLngAltitude (builderAction: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>): com.google.android.gms.maps3d.model.LatLngAltitude declared in com.google.android.gms.maps3d.model.DslKt' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=null
+              ARG builderAction: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=LAMBDA
+                COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  TYPE_ARG T: @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit>
+                  ARG dynamicCall: CALL 'public final fun invoke (): @[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> declared in kotlin.jvm.internal.invokeDynamic' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.LatLngAltitude, kotlin.Unit> origin=null
+                  ARG bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                    ARG tag: CONST Int type=kotlin.Int value=6
+                    ARG owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                    ARG name: CONST String type=kotlin.String value="metafactory"
+                    ARG descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                    ARG isInterface: CONST Boolean type=kotlin.Boolean value=false
+                  ARG bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: P1 of kotlin.Function1): R of kotlin.Function1 [operator] declared in kotlin.Function1' type=kotlin.Any
+                    RAW_FUNCTION_REFERENCE 'private final fun onMap3DViewReady$lambda$20 ($this$latLngAltitude: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? declared in com.example.matheasy.Mapa' type=kotlin.Any
+                    CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                      ARG method: RAW_FUNCTION_REFERENCE 'public abstract fun invoke (p1: com.google.android.gms.maps3d.model.LatLngAltitude): kotlin.Unit? [fake_override,operator] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+          GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+    COMPOSITE type=kotlin.Unit origin=null
+      VAR name:lineasActivas type:kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> [val]
+        CONSTRUCTOR_CALL 'public constructor <init> () declared in kotlin.jvm.internal.Ref.ObjectRef' type=kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> origin=null
+          TYPE_ARG (of class) T: kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>
+      SET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:T of kotlin.jvm.internal.Ref.ObjectRef visibility:public declared in kotlin.jvm.internal.Ref.ObjectRef' type=kotlin.Unit origin=null
+        receiver: GET_VAR 'val lineasActivas: kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> origin=null
+        value: CALL 'public final fun mutableListOf <T> (): kotlin.collections.MutableList<T of kotlin.collections.CollectionsKt.mutableListOf> [inline] declared in kotlin.collections.CollectionsKt' type=kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline> origin=null
+          TYPE_ARG T: com.google.android.gms.maps3d.model.Polyline
+    COMPOSITE type=kotlin.Unit origin=null
+      VAR name:index type:kotlin.jvm.internal.Ref.IntRef [val]
+        CONSTRUCTOR_CALL 'public constructor <init> () declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.jvm.internal.Ref.IntRef origin=null
+      SET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Unit origin=null
+        receiver: GET_VAR 'val index: kotlin.jvm.internal.Ref.IntRef [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.jvm.internal.Ref.IntRef origin=null
+        value: CONST Int type=kotlin.Int value=1
+    VAR name:handler type:android.os.Handler [val]
+      CONSTRUCTOR_CALL 'public constructor <init> (p0: @[EnhancedNullability] android.os.Looper) declared in android.os.Handler' type=android.os.Handler origin=null
+        ARG p0: CALL 'public open fun getMainLooper (): @[FlexibleNullability] android.os.Looper? declared in android.os.Looper' type=@[FlexibleNullability] android.os.Looper? origin=null
+    VAR name:runnable type:com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> [val]
+      BLOCK type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=OBJECT_LITERAL
+        CLASS CLASS name:<no name provided> modality:FINAL visibility:local superTypes:[java.lang.Runnable]
+          thisReceiver: VALUE_PARAMETER INSTANCE_RECEIVER kind:DispatchReceiver name:<this> type:com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>
+          CONSTRUCTOR visibility:public/*package*/ returnType:com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> [primary]
+            VALUE_PARAMETER BOUND_VALUE_PARAMETER kind:Regular name:$index index:0 type:kotlin.jvm.internal.Ref.IntRef
+            VALUE_PARAMETER BOUND_VALUE_PARAMETER kind:Regular name:$ruta index:1 type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude>
+            VALUE_PARAMETER BOUND_VALUE_PARAMETER kind:Regular name:$googleMap3D index:2 type:com.google.android.gms.maps3d.GoogleMap3D
+            VALUE_PARAMETER BOUND_VALUE_PARAMETER kind:Regular name:$lineasActivas index:3 type:kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>>
+            VALUE_PARAMETER BOUND_VALUE_PARAMETER kind:Regular name:$handler index:4 type:android.os.Handler
+            BLOCK_BODY
+              SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                value: GET_VAR '$index: kotlin.jvm.internal.Ref.IntRef declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.<init>' type=kotlin.jvm.internal.Ref.IntRef origin=null
+              SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$ruta type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                value: GET_VAR '$ruta: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.<init>' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+              SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$googleMap3D type:com.google.android.gms.maps3d.GoogleMap3D visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                value: GET_VAR '$googleMap3D: com.google.android.gms.maps3d.GoogleMap3D declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.<init>' type=com.google.android.gms.maps3d.GoogleMap3D origin=null
+              SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$lineasActivas type:kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                value: GET_VAR '$lineasActivas: kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.<init>' type=kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> origin=null
+              SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$handler type:android.os.Handler visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                value: GET_VAR '$handler: android.os.Handler declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.<init>' type=android.os.Handler origin=null
+              DELEGATING_CONSTRUCTOR_CALL 'public constructor <init> () [primary] declared in kotlin.Any'
+              BLOCK type=kotlin.Unit origin=null
+          FUN name:run visibility:public modality:OPEN returnType:kotlin.Unit
+            VALUE_PARAMETER kind:DispatchReceiver name:<this> index:0 type:com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>
+            overridden:
+              public abstract fun run (): kotlin.Unit declared in java.lang.Runnable
+            BLOCK_BODY
+              WHEN type=kotlin.Unit origin=IF
+                BRANCH
+                  if: CALL 'public final fun less (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=LT
+                    ARG arg0: GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Int origin=null
+                      receiver: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                        receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                    ARG arg1: CALL 'public abstract fun <get-size> (): kotlin.Int declared in kotlin.collections.List' type=kotlin.Int origin=GET_PROPERTY
+                      ARG <this>: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$ruta type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                        receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                  then: COMPOSITE type=kotlin.Unit origin=null
+                    BLOCK type=kotlin.Boolean origin=null
+                      VAR name:polyline type:com.google.android.gms.maps3d.model.Polyline [val]
+                        CALL 'public final fun addPolyline (polylineOptions: com.google.android.gms.maps3d.model.PolylineOptions): com.google.android.gms.maps3d.model.Polyline declared in com.google.android.gms.maps3d.GoogleMap3D' type=com.google.android.gms.maps3d.model.Polyline origin=null
+                          ARG <this>: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$googleMap3D type:com.google.android.gms.maps3d.GoogleMap3D visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=com.google.android.gms.maps3d.GoogleMap3D origin=null
+                            receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                          ARG polylineOptions: CALL 'public final fun apply <T> (<this>: T of kotlin.StandardKt.apply, block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.google.android.gms.maps3d.model.PolylineOptions origin=null
+                            TYPE_ARG T: com.google.android.gms.maps3d.model.PolylineOptions
+                            ARG <this>: CONSTRUCTOR_CALL 'public constructor <init> () declared in com.google.android.gms.maps3d.model.PolylineOptions' type=com.google.android.gms.maps3d.model.PolylineOptions origin=null
+                            ARG block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.PolylineOptions, kotlin.Unit> origin=LAMBDA
+                              COMPOSITE type=kotlin.Unit origin=null
+                              FUNCTION_REFERENCE 'private final fun run$lambda$0 ($this$apply: com.google.android.gms.maps3d.model.PolylineOptions, $ruta: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude>, $index: kotlin.jvm.internal.Ref.IntRef): kotlin.Unit declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.PolylineOptions, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+                                ARG $ruta: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$ruta type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                                  receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                                ARG $index: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                                  receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                      COMPOSITE type=kotlin.Unit origin=null
+                        CALL 'public abstract fun add (element: E of kotlin.collections.MutableList): kotlin.Boolean declared in kotlin.collections.MutableList' type=kotlin.Boolean origin=null
+                          ARG <this>: GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:T of kotlin.jvm.internal.Ref.ObjectRef visibility:public declared in kotlin.jvm.internal.Ref.ObjectRef' type=kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline> origin=null
+                            receiver: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$lineasActivas type:kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> origin=null
+                              receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                          ARG element: GET_VAR 'val polyline: com.google.android.gms.maps3d.model.Polyline [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.google.android.gms.maps3d.model.Polyline origin=null
+                        COMPOSITE type=kotlin.Unit origin=null
+                      COMPOSITE type=kotlin.Unit origin=null
+                        BLOCK type=kotlin.Int origin=POSTFIX_INCR
+                          VAR IR_TEMPORARY_VARIABLE name:<unary> type:kotlin.Int [val]
+                            GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Int origin=POSTFIX_INCR
+                              receiver: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                                receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                          SET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Unit origin=POSTFIX_INCR
+                            receiver: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                              receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                            value: CALL 'public final fun inc (): kotlin.Int [operator] declared in kotlin.Int' type=kotlin.Int origin=POSTFIX_INCR
+                              ARG <this>: GET_VAR 'val <unary>: kotlin.Int [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=kotlin.Int origin=null
+                          GET_VAR 'val <unary>: kotlin.Int [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=kotlin.Int origin=null
+                        COMPOSITE type=kotlin.Unit origin=null
+                      CALL 'public final fun postDelayed (p0: @[EnhancedNullability] java.lang.Runnable, p1: kotlin.Long): kotlin.Boolean declared in android.os.Handler' type=kotlin.Boolean origin=null
+                        ARG <this>: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$handler type:android.os.Handler visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=android.os.Handler origin=null
+                          receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                        ARG p0: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                        ARG p1: CONST Long type=kotlin.Long value=500
+                    COMPOSITE type=kotlin.Unit origin=null
+          FUN FAKE_OVERRIDE name:equals visibility:public modality:OPEN returnType:kotlin.Boolean [fake_override,operator]
+            VALUE_PARAMETER kind:DispatchReceiver name:<this> index:0 type:kotlin.Any
+            VALUE_PARAMETER kind:Regular name:other index:1 type:kotlin.Any?
+            overridden:
+              public open fun equals (other: kotlin.Any?): kotlin.Boolean [fake_override,operator] declared in java.lang.Runnable
+          FUN FAKE_OVERRIDE name:hashCode visibility:public modality:OPEN returnType:kotlin.Int [fake_override]
+            VALUE_PARAMETER kind:DispatchReceiver name:<this> index:0 type:kotlin.Any
+            overridden:
+              public open fun hashCode (): kotlin.Int [fake_override] declared in java.lang.Runnable
+          FUN FAKE_OVERRIDE name:toString visibility:public modality:OPEN returnType:kotlin.String [fake_override]
+            VALUE_PARAMETER kind:DispatchReceiver name:<this> index:0 type:kotlin.Any
+            overridden:
+              public open fun toString (): kotlin.String [fake_override] declared in java.lang.Runnable
+          FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final]
+          FIELD FIELD_FOR_CAPTURED_VALUE name:$ruta type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> visibility:public/*package*/ [final]
+          FIELD FIELD_FOR_CAPTURED_VALUE name:$googleMap3D type:com.google.android.gms.maps3d.GoogleMap3D visibility:public/*package*/ [final]
+          FIELD FIELD_FOR_CAPTURED_VALUE name:$lineasActivas type:kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> visibility:public/*package*/ [final]
+          FIELD FIELD_FOR_CAPTURED_VALUE name:$handler type:android.os.Handler visibility:public/*package*/ [final]
+          FUN INLINE_LAMBDA name:run$lambda$0 visibility:private modality:FINAL returnType:kotlin.Unit
+            VALUE_PARAMETER kind:ExtensionReceiver name:$this$apply index:0 type:com.google.android.gms.maps3d.model.PolylineOptions
+            VALUE_PARAMETER BOUND_VALUE_PARAMETER kind:Regular name:$ruta index:1 type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude>
+            VALUE_PARAMETER BOUND_VALUE_PARAMETER kind:Regular name:$index index:2 type:kotlin.jvm.internal.Ref.IntRef
+            BLOCK_BODY
+              VAR name:$i$a$-apply-Mapa$onMap3DViewReady$runnable$1$run$polyline$1 type:kotlin.Int [val]
+                CONST Int type=kotlin.Int value=0
+              SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:width type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+                value: CONST Int type=kotlin.Int value=6
+              CALL 'public open fun setAltitudeMode (p0: kotlin.Int): kotlin.Unit declared in com.google.android.gms.maps3d.model.PolylineOptions' type=kotlin.Unit origin=EQ
+                ARG <this>: GET_VAR '$this$apply: com.google.android.gms.maps3d.model.PolylineOptions declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=com.google.android.gms.maps3d.model.PolylineOptions origin=null
+                ARG p0: CONST Int type=kotlin.Int value=1
+              VAR name:segment type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+                CALL 'public final fun listOf <T> (vararg elements: T of kotlin.collections.CollectionsKt.listOf): kotlin.collections.List<T of kotlin.collections.CollectionsKt.listOf> declared in kotlin.collections.CollectionsKt' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                  TYPE_ARG T: com.google.android.gms.maps3d.model.LatLngAltitude
+                  ARG elements: BLOCK type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                    VAR IR_TEMPORARY_VARIABLE name:tmp0 type:kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+                      CALL 'public final fun arrayOfNulls <T> (size: kotlin.Int): kotlin.Array<T of kotlin.arrayOfNulls?> declared in kotlin' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                        TYPE_ARG T: com.google.android.gms.maps3d.model.LatLngAltitude
+                        ARG size: CONST Int type=kotlin.Int value=2
+                    CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+                      ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                      ARG index: CONST Int type=kotlin.Int value=0
+                      ARG value: CALL 'public abstract fun get (index: kotlin.Int): E of kotlin.collections.List [operator] declared in kotlin.collections.List' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=GET_ARRAY_ELEMENT
+                        ARG <this>: GET_VAR '$ruta: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                        ARG index: CALL 'public final fun minus (other: kotlin.Int): kotlin.Int [operator] declared in kotlin.Int' type=kotlin.Int origin=MINUS
+                          ARG <this>: GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Int origin=null
+                            receiver: GET_VAR '$index: kotlin.jvm.internal.Ref.IntRef declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                          ARG other: CONST Int type=kotlin.Int value=1
+                    CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+                      ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                      ARG index: CONST Int type=kotlin.Int value=1
+                      ARG value: CALL 'public abstract fun get (index: kotlin.Int): E of kotlin.collections.List [operator] declared in kotlin.collections.List' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=GET_ARRAY_ELEMENT
+                        ARG <this>: GET_VAR '$ruta: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                        ARG index: GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Int origin=null
+                          receiver: GET_VAR '$index: kotlin.jvm.internal.Ref.IntRef declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                    GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+              BLOCK type=kotlin.Unit origin=FOR_LOOP
+                VAR FOR_LOOP_ITERATOR name:<iterator> type:kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+                  CALL 'public abstract fun iterator (): kotlin.collections.Iterator<E of kotlin.collections.List> [operator] declared in kotlin.collections.List' type=kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> origin=FOR_LOOP_ITERATOR
+                    ARG <this>: GET_VAR 'val segment: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                WHILE label=Mapa$onMap3DViewReady$runnable$<no name provided>$run$lambda$02 origin=FOR_LOOP_INNER_WHILE
+                  condition: CALL 'public abstract fun hasNext (): kotlin.Boolean [operator] declared in kotlin.collections.Iterator' type=kotlin.Boolean origin=FOR_LOOP_HAS_NEXT
+                    ARG <this>: GET_VAR 'val <iterator>: kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                  body: BLOCK type=kotlin.Unit origin=FOR_LOOP_INNER_WHILE
+                    VAR FOR_LOOP_VARIABLE name:p type:com.google.android.gms.maps3d.model.LatLngAltitude [val]
+                      CALL 'public abstract fun next (): T of kotlin.collections.Iterator [operator] declared in kotlin.collections.Iterator' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=FOR_LOOP_NEXT
+                        ARG <this>: GET_VAR 'val <iterator>: kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                    BLOCK type=kotlin.Unit origin=null
+        BLOCK type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+          CONSTRUCTOR_CALL 'public/*package*/ constructor <init> ($index: kotlin.jvm.internal.Ref.IntRef, $ruta: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude>, $googleMap3D: com.google.android.gms.maps3d.GoogleMap3D, $lineasActivas: kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>>, $handler: android.os.Handler) [primary] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=OBJECT_LITERAL
+            ARG $index: GET_VAR 'val index: kotlin.jvm.internal.Ref.IntRef [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.jvm.internal.Ref.IntRef origin=null
+            ARG $ruta: GET_VAR 'val ruta: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG $googleMap3D: GET_VAR 'googleMap3D: com.google.android.gms.maps3d.GoogleMap3D declared in com.example.matheasy.Mapa.onMap3DViewReady' type=com.google.android.gms.maps3d.GoogleMap3D origin=null
+            ARG $lineasActivas: GET_VAR 'val lineasActivas: kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> origin=null
+            ARG $handler: GET_VAR 'val handler: android.os.Handler [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=android.os.Handler origin=null
+    COMPOSITE type=kotlin.Unit origin=null
+      CALL 'public final fun post (p0: @[EnhancedNullability] java.lang.Runnable): kotlin.Boolean declared in android.os.Handler' type=kotlin.Boolean origin=null
+        ARG <this>: GET_VAR 'val handler: android.os.Handler [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=android.os.Handler origin=null
+        ARG p0: GET_VAR 'val runnable: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+      COMPOSITE type=kotlin.Unit origin=null
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:50)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate$default(FunctionCodegen.kt:43)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethodNode(ClassCodegen.kt:422)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethod(ClassCodegen.kt:439)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:164)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.generateFile(JvmIrCodegenFactory.kt:419)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.invokeCodegen(JvmIrCodegenFactory.kt:388)
+	at org.jetbrains.kotlin.cli.jvm.compiler.KotlinToJVMBytecodeCompiler.runCodegen$cli(KotlinToJVMBytecodeCompiler.kt:432)
+	at org.jetbrains.kotlin.cli.pipeline.jvm.JvmBackendPipelinePhase.executePhase(JvmBackendPipelinePhase.kt:95)
+	at org.jetbrains.kotlin.cli.pipeline.jvm.JvmBackendPipelinePhase.executePhase(JvmBackendPipelinePhase.kt:36)
+	at org.jetbrains.kotlin.cli.pipeline.jvm.JvmBackendPipelinePhase.executePhase(JvmBackendPipelinePhase.kt:29)
+	at org.jetbrains.kotlin.cli.pipeline.PipelinePhase.phaseBody(PipelinePhase.kt:68)
+	at org.jetbrains.kotlin.cli.pipeline.PipelinePhase.phaseBody(PipelinePhase.kt:58)
+	at org.jetbrains.kotlin.config.phaser.NamedCompilerPhase.invoke(CompilerPhase.kt:102)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:22)
+	at org.jetbrains.kotlin.config.phaser.CompilerPhaseKt.invokeToplevel(CompilerPhase.kt:53)
+	at org.jetbrains.kotlin.cli.pipeline.AbstractCliPipeline.runPhasedPipeline(AbstractCliPipeline.kt:109)
+	at org.jetbrains.kotlin.cli.pipeline.AbstractCliPipeline.execute(AbstractCliPipeline.kt:68)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecutePhased(K2JVMCompiler.kt:78)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecutePhased(K2JVMCompiler.kt:44)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:90)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.exec(CLICompiler.kt:352)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunnerBase.runCompiler(IncrementalJvmCompilerRunnerBase.kt:175)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunnerBase.runCompiler(IncrementalJvmCompilerRunnerBase.kt:38)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.doCompile(IncrementalCompilerRunner.kt:504)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileImpl(IncrementalCompilerRunner.kt:421)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally$lambda$10$compile(IncrementalCompilerRunner.kt:254)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally(IncrementalCompilerRunner.kt:272)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compile(IncrementalCompilerRunner.kt:124)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.execIncrementalCompiler(CompileServiceImpl.kt:679)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.access$execIncrementalCompiler(CompileServiceImpl.kt:93)
+	at org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(CompileServiceImpl.kt:1806)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN name:run visibility:public modality:OPEN returnType:kotlin.Unit
+  VALUE_PARAMETER kind:DispatchReceiver name:<this> index:0 type:com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>
+  overridden:
+    public abstract fun run (): kotlin.Unit declared in java.lang.Runnable
+  BLOCK_BODY
+    WHEN type=kotlin.Unit origin=IF
+      BRANCH
+        if: CALL 'public final fun less (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=LT
+          ARG arg0: GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Int origin=null
+            receiver: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.IntRef origin=null
+              receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+          ARG arg1: CALL 'public abstract fun <get-size> (): kotlin.Int declared in kotlin.collections.List' type=kotlin.Int origin=GET_PROPERTY
+            ARG <this>: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$ruta type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+              receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+        then: COMPOSITE type=kotlin.Unit origin=null
+          BLOCK type=kotlin.Boolean origin=null
+            VAR name:polyline type:com.google.android.gms.maps3d.model.Polyline [val]
+              CALL 'public final fun addPolyline (polylineOptions: com.google.android.gms.maps3d.model.PolylineOptions): com.google.android.gms.maps3d.model.Polyline declared in com.google.android.gms.maps3d.GoogleMap3D' type=com.google.android.gms.maps3d.model.Polyline origin=null
+                ARG <this>: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$googleMap3D type:com.google.android.gms.maps3d.GoogleMap3D visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=com.google.android.gms.maps3d.GoogleMap3D origin=null
+                  receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                ARG polylineOptions: CALL 'public final fun apply <T> (<this>: T of kotlin.StandardKt.apply, block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.google.android.gms.maps3d.model.PolylineOptions origin=null
+                  TYPE_ARG T: com.google.android.gms.maps3d.model.PolylineOptions
+                  ARG <this>: CONSTRUCTOR_CALL 'public constructor <init> () declared in com.google.android.gms.maps3d.model.PolylineOptions' type=com.google.android.gms.maps3d.model.PolylineOptions origin=null
+                  ARG block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.PolylineOptions, kotlin.Unit> origin=LAMBDA
+                    COMPOSITE type=kotlin.Unit origin=null
+                    FUNCTION_REFERENCE 'private final fun run$lambda$0 ($this$apply: com.google.android.gms.maps3d.model.PolylineOptions, $ruta: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude>, $index: kotlin.jvm.internal.Ref.IntRef): kotlin.Unit declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=@[ExtensionFunctionType] kotlin.Function1<com.google.android.gms.maps3d.model.PolylineOptions, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+                      ARG $ruta: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$ruta type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+                        receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                      ARG $index: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                        receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+            COMPOSITE type=kotlin.Unit origin=null
+              CALL 'public abstract fun add (element: E of kotlin.collections.MutableList): kotlin.Boolean declared in kotlin.collections.MutableList' type=kotlin.Boolean origin=null
+                ARG <this>: GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:T of kotlin.jvm.internal.Ref.ObjectRef visibility:public declared in kotlin.jvm.internal.Ref.ObjectRef' type=kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline> origin=null
+                  receiver: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$lineasActivas type:kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.ObjectRef<kotlin.collections.MutableList<com.google.android.gms.maps3d.model.Polyline>> origin=null
+                    receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                ARG element: GET_VAR 'val polyline: com.google.android.gms.maps3d.model.Polyline [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.google.android.gms.maps3d.model.Polyline origin=null
+              COMPOSITE type=kotlin.Unit origin=null
+            COMPOSITE type=kotlin.Unit origin=null
+              BLOCK type=kotlin.Int origin=POSTFIX_INCR
+                VAR IR_TEMPORARY_VARIABLE name:<unary> type:kotlin.Int [val]
+                  GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Int origin=POSTFIX_INCR
+                    receiver: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                      receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                SET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Unit origin=POSTFIX_INCR
+                  receiver: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$index type:kotlin.jvm.internal.Ref.IntRef visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                    receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+                  value: CALL 'public final fun inc (): kotlin.Int [operator] declared in kotlin.Int' type=kotlin.Int origin=POSTFIX_INCR
+                    ARG <this>: GET_VAR 'val <unary>: kotlin.Int [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=kotlin.Int origin=null
+                GET_VAR 'val <unary>: kotlin.Int [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=kotlin.Int origin=null
+              COMPOSITE type=kotlin.Unit origin=null
+            CALL 'public final fun postDelayed (p0: @[EnhancedNullability] java.lang.Runnable, p1: kotlin.Long): kotlin.Boolean declared in android.os.Handler' type=kotlin.Boolean origin=null
+              ARG <this>: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$handler type:android.os.Handler visibility:public/*package*/ [final] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>' type=android.os.Handler origin=null
+                receiver: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+              ARG p0: GET_VAR '<this>: com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run' type=com.example.matheasy.Mapa.onMap3DViewReady.<no name provided> origin=null
+              ARG p1: CONST Long type=kotlin.Long value=500
+          COMPOSITE type=kotlin.Unit origin=null
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:50)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate$default(FunctionCodegen.kt:43)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethodNode(ClassCodegen.kt:422)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethod(ClassCodegen.kt:439)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:164)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitClass(ExpressionCodegen.kt:951)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitClass(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.declarations.IrClass.accept(IrClass.kt:72)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:541)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.visitors.IrVisitor.visitBlock(IrVisitor.kt:122)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:413)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrBlock.accept(IrBlock.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:725)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.declarations.IrVariable.accept(IrVariable.kt:36)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:532)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:233)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:126)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	... 46 more
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN INLINE_LAMBDA name:run$lambda$0 visibility:private modality:FINAL returnType:kotlin.Unit
+  VALUE_PARAMETER kind:ExtensionReceiver name:$this$apply index:0 type:com.google.android.gms.maps3d.model.PolylineOptions
+  VALUE_PARAMETER BOUND_VALUE_PARAMETER kind:Regular name:$ruta index:1 type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude>
+  VALUE_PARAMETER BOUND_VALUE_PARAMETER kind:Regular name:$index index:2 type:kotlin.jvm.internal.Ref.IntRef
+  BLOCK_BODY
+    VAR name:$i$a$-apply-Mapa$onMap3DViewReady$runnable$1$run$polyline$1 type:kotlin.Int [val]
+      CONST Int type=kotlin.Int value=0
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:width type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+      value: CONST Int type=kotlin.Int value=6
+    CALL 'public open fun setAltitudeMode (p0: kotlin.Int): kotlin.Unit declared in com.google.android.gms.maps3d.model.PolylineOptions' type=kotlin.Unit origin=EQ
+      ARG <this>: GET_VAR '$this$apply: com.google.android.gms.maps3d.model.PolylineOptions declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=com.google.android.gms.maps3d.model.PolylineOptions origin=null
+      ARG p0: CONST Int type=kotlin.Int value=1
+    VAR name:segment type:kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+      CALL 'public final fun listOf <T> (vararg elements: T of kotlin.collections.CollectionsKt.listOf): kotlin.collections.List<T of kotlin.collections.CollectionsKt.listOf> declared in kotlin.collections.CollectionsKt' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+        TYPE_ARG T: com.google.android.gms.maps3d.model.LatLngAltitude
+        ARG elements: BLOCK type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+          VAR IR_TEMPORARY_VARIABLE name:tmp0 type:kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+            CALL 'public final fun arrayOfNulls <T> (size: kotlin.Int): kotlin.Array<T of kotlin.arrayOfNulls?> declared in kotlin' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+              TYPE_ARG T: com.google.android.gms.maps3d.model.LatLngAltitude
+              ARG size: CONST Int type=kotlin.Int value=2
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=0
+            ARG value: CALL 'public abstract fun get (index: kotlin.Int): E of kotlin.collections.List [operator] declared in kotlin.collections.List' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=GET_ARRAY_ELEMENT
+              ARG <this>: GET_VAR '$ruta: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+              ARG index: CALL 'public final fun minus (other: kotlin.Int): kotlin.Int [operator] declared in kotlin.Int' type=kotlin.Int origin=MINUS
+                ARG <this>: GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Int origin=null
+                  receiver: GET_VAR '$index: kotlin.jvm.internal.Ref.IntRef declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.jvm.internal.Ref.IntRef origin=null
+                ARG other: CONST Int type=kotlin.Int value=1
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            ARG <this>: GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+            ARG index: CONST Int type=kotlin.Int value=1
+            ARG value: CALL 'public abstract fun get (index: kotlin.Int): E of kotlin.collections.List [operator] declared in kotlin.collections.List' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=GET_ARRAY_ELEMENT
+              ARG <this>: GET_VAR '$ruta: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+              ARG index: GET_FIELD 'FIELD IR_BUILTINS_STUB name:element type:kotlin.Int visibility:public declared in kotlin.jvm.internal.Ref.IntRef' type=kotlin.Int origin=null
+                receiver: GET_VAR '$index: kotlin.jvm.internal.Ref.IntRef declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.jvm.internal.Ref.IntRef origin=null
+          GET_VAR 'val tmp0: kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.Array<out com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+    BLOCK type=kotlin.Unit origin=FOR_LOOP
+      VAR FOR_LOOP_ITERATOR name:<iterator> type:kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> [val]
+        CALL 'public abstract fun iterator (): kotlin.collections.Iterator<E of kotlin.collections.List> [operator] declared in kotlin.collections.List' type=kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> origin=FOR_LOOP_ITERATOR
+          ARG <this>: GET_VAR 'val segment: kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.List<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+      WHILE label=Mapa$onMap3DViewReady$runnable$<no name provided>$run$lambda$02 origin=FOR_LOOP_INNER_WHILE
+        condition: CALL 'public abstract fun hasNext (): kotlin.Boolean [operator] declared in kotlin.collections.Iterator' type=kotlin.Boolean origin=FOR_LOOP_HAS_NEXT
+          ARG <this>: GET_VAR 'val <iterator>: kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+        body: BLOCK type=kotlin.Unit origin=FOR_LOOP_INNER_WHILE
+          VAR FOR_LOOP_VARIABLE name:p type:com.google.android.gms.maps3d.model.LatLngAltitude [val]
+            CALL 'public abstract fun next (): T of kotlin.collections.Iterator [operator] declared in kotlin.collections.Iterator' type=com.google.android.gms.maps3d.model.LatLngAltitude origin=FOR_LOOP_NEXT
+              ARG <this>: GET_VAR 'val <iterator>: kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> [val] declared in com.example.matheasy.Mapa.onMap3DViewReady.<no name provided>.run$lambda$0' type=kotlin.collections.Iterator<com.google.android.gms.maps3d.model.LatLngAltitude> origin=null
+          BLOCK type=kotlin.Unit origin=null
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:50)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrSourceCompilerForInline.generateLambdaBody(IrSourceCompilerForInline.kt:72)
+	at org.jetbrains.kotlin.codegen.inline.ExpressionLambda.generateLambdaBody(LambdaInfo.kt:72)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrInlineCodegen.genValueAndPut(IrInlineCodegen.kt:122)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:564)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:577)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.gen(ExpressionCodegen.kt:214)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrCallGenerator.genValueAndPut(IrCallGenerator.kt:48)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:564)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:577)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:725)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.declarations.IrVariable.accept(IrVariable.kt:36)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:541)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.visitors.IrVisitor.visitBlock(IrVisitor.kt:122)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:413)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrBlock.accept(IrBlock.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:541)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.visitors.IrVisitor.visitComposite(IrVisitor.kt:125)
+	at org.jetbrains.kotlin.ir.expressions.IrComposite.accept(IrComposite.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitWhen(ExpressionCodegen.kt:1049)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitWhen(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrWhen.accept(IrWhen.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:532)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:233)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:126)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	... 70 more
+Caused by: java.lang.AssertionError: access of const val: SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:width type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+  value: CONST Int type=kotlin.Int value=6
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:807)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.visitors.IrVisitor.visitSetField(IrVisitor.kt:215)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:858)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrSetField.accept(IrSetField.kt:21)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:527)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:532)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:135)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:233)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:126)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	... 108 more
+
+

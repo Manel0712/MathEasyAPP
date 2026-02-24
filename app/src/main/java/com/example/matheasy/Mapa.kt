@@ -1,12 +1,18 @@
 package com.example.matheasy
 
+import android.R.attr.width
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.service.autofill.Validators.or
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -21,6 +27,10 @@ import com.example.matheasy.databinding.ActivityMapaBinding
 import com.example.matheasy.models.Alumne
 import com.example.matheasy.models.LocationItem
 import com.example.matheasy.models.MarkerInfo
+import android.view.View
+import android.widget.FrameLayout
+import android.widget.TextView
+import androidx.core.os.postDelayed
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -30,19 +40,61 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
+import okhttp3.Call
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import org.json.JSONObject
+import java.io.IOException
+import okhttp3.Callback
+import com.google.android.gms.maps3d.GoogleMap3D
+import com.google.android.gms.maps3d.Map3DView
+import com.google.android.gms.maps3d.OnMap3DViewReadyCallback
+import com.google.android.gms.maps3d.model.AltitudeMode
+import com.google.android.gms.maps3d.model.CollisionBehavior
+import com.google.android.gms.maps3d.model.LatLngAltitude
+import com.google.android.gms.maps3d.model.Map3DMode
+import com.google.android.gms.maps3d.model.Polyline
+import com.google.android.gms.maps3d.model.camera
+import com.google.android.gms.maps3d.model.cameraRestriction
+import com.google.android.gms.maps3d.model.flyToOptions
+import com.google.android.gms.maps3d.model.latLngAltitude
+import com.google.android.gms.maps3d.model.markerOptions
+import com.google.android.gms.maps3d.model.latLngAltitude
+import com.google.android.gms.maps3d.model.latLngBounds
+import com.google.android.gms.maps3d.model.modelOptions
+import com.google.android.gms.maps3d.model.orientation
+import com.google.android.gms.maps3d.model.polylineOptions
+import com.google.android.gms.maps3d.model.vector3D
+import kotlin.collections.listOf
+import java.util.Collections.addAll
+import androidx.core.os.HandlerCompat
+import com.example.matheasy.models.EstacionInfo
+import com.google.android.gms.maps.model.Dash
+import com.google.android.gms.maps.model.Gap
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class Mapa : AppCompatActivity(), OnMapReadyCallback {
-
     private lateinit var binding: ActivityMapaBinding
     private lateinit var mapa: GoogleMap
-
+    private lateinit var mapa3DFragment: Map3DView
+    private lateinit var mapa3D: GoogleMap3D
     private val marques: MutableList<Marker?> = ArrayList()
-
     private var isPanelOpen = false
     private var panelWidth = 0f
     private lateinit var niveles: List<LocationItem>
     private lateinit var alumne: Alumne
     var convidats = false
+    val estacionesMarcadas = HashSet<String>()
+
+    private lateinit var apiKey: String
+    private lateinit var infoView: View
+    private lateinit var titulo: TextView
+    private lateinit var subtitulo: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +120,7 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
             packageName,
             PackageManager.GET_META_DATA
         )
-        val apiKey = appInfo.metaData.getString("com.google.android.geo.API_KEY")
+        apiKey = appInfo.metaData.getString("com.google.android.geo.API_KEY")!!
         Log.d("API_KEY", "Mi API Key: " + apiKey ?: "Null")
 
         binding.rvLocations.layoutManager = LinearLayoutManager(this)
@@ -96,7 +148,8 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
         mapa.setInfoWindowAdapter(infoWindowAdapter(this))
 
         mapa.setOnInfoWindowClickListener { clickedMarker ->
-            val tagInfo = clickedMarker.tag as? MarkerInfo ?: return@setOnInfoWindowClickListener
+            val tagInfo = clickedMarker.tag
+            if (tagInfo !is MarkerInfo) return@setOnInfoWindowClickListener
             val i = Intent(this, nivells::class.java)
             i.putExtra("nivell", tagInfo.title)
             i.putExtra("numero", tagInfo.numero)
@@ -106,6 +159,113 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
             }
             resultLauncherConfiguration.launch(i)
         }
+
+        for (c in 1 until niveles.size) {
+            if (niveles[c-1].completado) {
+                val origen = LatLng(niveles[c-1].lat, niveles[c-1].lng)
+                val destino = LatLng(niveles[c].lat, niveles[c].lng)
+                obtenerRuta(origen, destino)
+            }
+        }
+    }
+    private fun obtenerRuta(origen: LatLng, destino: LatLng) {
+        val url =
+            "https://maps.googleapis.com/maps/api/directions/json" +
+                    "?origin=${origen.latitude},${origen.longitude}" +
+                    "&destination=${destino.latitude},${destino.longitude}" +
+                    "&mode=transit" +
+                    "&transit_mode=subway|train|tram" +
+                    "&key=$apiKey"
+        val request = Request.Builder().url(url).build()
+        OkHttpClient().newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("MAPS", "Error: ${e.message}")
+            }
+            override fun onResponse(call: Call, response: Response) {
+                val json = response.body?.string() ?: return
+                procesarRuta(JSONObject(json))
+            }
+        })
+    }
+    private fun procesarRuta(json: JSONObject) {
+        val routes = json.getJSONArray("routes")
+        if (routes.length() == 0) return
+        val steps = routes.getJSONObject(0)
+            .getJSONArray("legs")
+            .getJSONObject(0)
+            .getJSONArray("steps")
+        val rutaCompleta = ArrayList<LatLng>()
+        for (i in 0 until steps.length()) {
+            val step = steps.getJSONObject(i)
+            val points = step.getJSONObject("polyline").getString("points")
+            val coords = decodePoly(points)
+            runOnUiThread {
+                if (step.getString("travel_mode") == "WALKING") {
+                    dibujarCaminando(coords)
+                } else if (step.has("transit_details")) {
+                    dibujarTransporte(step, coords)
+                }
+            }
+            rutaCompleta.addAll(coords)
+        }
+        if (rutaCompleta.isNotEmpty()) {
+            runOnUiThread {
+                mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(rutaCompleta.first(), 14f))
+            }
+        }
+    }
+    private fun dibujarCaminando(coords: List<LatLng>) {
+        mapa.addPolyline(
+            PolylineOptions()
+                .addAll(coords)
+                .width(20f)
+                .color(Color.GRAY)
+                .pattern(listOf(Dash(30f), Gap(20f)))
+        )
+    }
+    private fun dibujarTransporte(step: JSONObject, coords: List<LatLng>) {
+        val transit = step.getJSONObject("transit_details")
+        val line = transit.getJSONObject("line")
+        val colorHex = line.optString("color", "#2196F3")
+        val color = Color.parseColor(colorHex)
+        val shortName = line.optString("short_name", "")
+        val vehicle = line.getJSONObject("vehicle").getString("type")
+        mapa.addPolyline(
+        PolylineOptions()
+            .addAll(coords)
+            .width(20f)
+            .color(color)
+        )
+        Log.d("TRANSIT", "$vehicle - Línea $shortName")
+    }
+    private fun decodePoly(encoded: String): List<LatLng> {
+        val poly = ArrayList<LatLng>()
+        var index = 0
+        val len = encoded.length
+        var lat = 0
+        var lng = 0
+        while (index < len) {
+            var b: Int
+            var shift = 0
+            var result = 0
+            do {
+                b = encoded[index++].code - 63
+                result = result or (b and 0x1f shl shift)
+                shift += 5
+            } while (b >= 0x20)
+            val dlat = if (result and 1 != 0) (result shr 1).inv() else result shr 1
+            lat += dlat
+            shift = 0
+            result = 0
+            do { b = encoded[index++].code - 63
+                result = result or (b and 0x1f shl shift)
+                shift += 5
+            } while (b >= 0x20)
+            val dlng = if (result and 1 != 0) (result shr 1).inv() else result shr 1
+            lng += dlng
+            poly.add(LatLng(lat.toDouble() / 1E5, lng.toDouble() / 1E5))
+        }
+        return poly
     }
 
     var resultLauncherConfiguration = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
@@ -227,7 +387,7 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                     }
                 }*/
                 mapa.clear()
-                for (c in 0 until 5) {
+                for (c in 0 until 6) {
                     niveles[5].completado = true
                     binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
                         marcarUbicacion(location)
@@ -311,15 +471,22 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
         val latLng = LatLng(location.lat, location.lng)
 
         var marker: Marker?
-        if (location.completado) {
+        if (location.completado && !location.numero.equals("1-6")) {
             marker = mapa.addMarker(
                 MarkerOptions().position(latLng).anchor(0.5f, 1f).icon(markerIconFromDrawable(this,R.drawable.ic_marker))
             )
         }
         else if (location.numero.equals("1-6")) {
-            marker = mapa.addMarker(
-                MarkerOptions().position(latLng).anchor(0.5f, 1f)
-            )
+            if (location.completado) {
+                marker = mapa.addMarker(
+                    MarkerOptions().position(latLng).anchor(0.5f, 1f).icon(markerIconFromDrawable(this,R.drawable.castillo__2_))
+                )
+            }
+            else {
+                marker = mapa.addMarker(
+                    MarkerOptions().position(latLng).anchor(0.5f, 1f).icon(markerIconFromDrawable(this,R.drawable.castillo__1_))
+                )
+            }
         }
         else {
             marker = mapa.addMarker(
@@ -376,5 +543,14 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
             }
             return locations
         }
+    }
+
+    fun closeMapa(view: View) {
+        val i: Intent = Intent()
+        if (!convidats) {
+            i.putExtra("alumne", alumne)
+        }
+        setResult(Activity.RESULT_OK, i)
+        finish()
     }
 }

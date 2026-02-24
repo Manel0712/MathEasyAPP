@@ -24,6 +24,11 @@ rendering = "1.17.1"
 sceneformUx = "1.17.1"
 assets = "1.17.1"
 arcore = "1.45.0"
+socketio = "2.0.1"
+biometric = "1.2.0-alpha05"
+securityCrypto = "1.1.0-alpha04"
+cardview = "1.0.0"
+maps3dSdk = "0.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -50,6 +55,11 @@ rendering = { group = "com.google.ar.sceneform", name = "rendering", version.ref
 sceneform-ux = { group = "com.google.ar.sceneform.ux", name = "sceneform-ux", version.ref = "sceneformUx" }
 assets = { group = "com.google.ar.sceneform", name = "assets", version.ref = "assets" }
 arcore = { group = "com.google.ar", name = "core", version.ref = "arcore" }
+socketio = { module = "io.socket:socket.io-client", version.ref = "socketio" }
+biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
+security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+play-services-maps3d = { module = "com.google.android.gms:play-services-maps3d", version.ref = "maps3dSdk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
