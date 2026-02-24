@@ -5,6 +5,7 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30dp</item>
     </style>
     <style name="textButtonLoggin" parent="Button">
         <item name="android:text">@string/logginButtonText</item>
@@ -21,8 +22,14 @@
     <style name="textButtonInformes" parent="Button">
         <item name="android:text">@string/informesButtonText</item>
     </style>
+    <style name="textButtonTangram" parent="Button">
+        <item name="android:text">@string/tangramButtonText</item>
+    </style>
     <style name="textButtonPerfil" parent="Button">
         <item name="android:text">@string/perfilButtonText</item>
+    </style>
+    <style name="textButtonCompetitiu" parent="Button">
+        <item name="android:text">@string/competitiuButtonText</item>
     </style>
     <style name="textButtonJugar">
         <item name="android:backgroundTint">@color/white</item>
@@ -30,6 +37,15 @@
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textStyle">bold</item>
         <item name="android:text">@string/jugarButtonText</item>
+        <item name="android:textSize">30dp</item>
+    </style>
+    <style name="textButtonCerrar">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/closeButtonText</item>
+        <item name="android:textSize">30dp</item>
     </style>
     <style name="Circle" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerSize">50%</item>
@@ -59,6 +75,7 @@
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textStyle">bold</item>
         <item name="android:text">@string/tancaButtonText</item>
+        <item name="android:textSize">30dp</item>
     </style>
     <style name="inputs">
         <item name="android:background">@color/fons</item>

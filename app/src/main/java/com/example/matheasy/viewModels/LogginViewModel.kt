@@ -20,6 +20,7 @@ import android.util.Log
 import okhttp3.ResponseBody
 import java.io.OutputStream
 import android.provider.MediaStore
+import com.example.matheasy.models.Resposta
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -30,8 +31,11 @@ class LogginViewModel: ViewModel() {
     private val _logginLoading = MutableLiveData(false)
     public val logginLoading: LiveData<Boolean> get() = _logginLoading
 
-    private val _loggin = MutableLiveData<List<Alumne>>(emptyList())
-    public val loggin: LiveData<List<Alumne>> get() = _loggin
+    private val _loggin = MutableLiveData<Resposta>()
+    public val loggin: LiveData<Resposta> get() = _loggin
+
+    private val _biometricLoggin = MutableLiveData<List<Alumne>>(emptyList())
+    public val biometricLoggin: LiveData<List<Alumne>> get() = _biometricLoggin
 
     private val _error = MutableLiveData<String?>(null)
     public val error: LiveData<String?> get() = _error
@@ -42,10 +46,37 @@ class LogginViewModel: ViewModel() {
             _error.value = null
 
             try {
-                lateinit var resposta: Response<List<Alumne>>
+                lateinit var resposta: Response<Resposta>
                 resposta = Connection.service.loggin(Nom_Usuari, Password)
                 if (resposta.isSuccessful) {
                     _loggin.value = resposta.body()
+                }
+                else {
+                    _error.value = "ERROR CODE: " + resposta.code().toString()
+                }
+            }
+            catch (e: IOException) {
+                _error.value = "Error de xarxa"
+            }
+            catch (e: Exception) {
+                _error.value = "Error desconocido: ${e.localizedMessage}"
+            }
+            finally {
+                _logginLoading.value = false
+            }
+        }
+    }
+
+    public fun biometricLoggin(token: String) {
+        viewModelScope.launch {
+            _logginLoading.value = true
+            _error.value = null
+
+            try {
+                lateinit var resposta: Response<List<Alumne>>
+                resposta = Connection.service.tokenLoggin(token)
+                if (resposta.isSuccessful) {
+                    _biometricLoggin.value = resposta.body()
                 }
                 else {
                     _error.value = "ERROR CODE: " + resposta.code().toString()

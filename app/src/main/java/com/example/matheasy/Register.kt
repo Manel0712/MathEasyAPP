@@ -6,16 +6,31 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.matheasy.adapters.DropdownAdapter
 import com.example.matheasy.databinding.ActivityRegisterBinding
 import com.example.matheasy.models.Alumne
 import com.example.matheasy.viewModels.RegisterViewModel
@@ -28,6 +43,11 @@ class Register : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels { RegisterViewModelFactory() }
     private lateinit var alumne: Alumne
+    private lateinit var selectorBox: FrameLayout
+    private lateinit var tvSelector: TextView
+    private lateinit var recyclerOptions: RecyclerView
+    private lateinit var mainLayout: ConstraintLayout
+    private var popupWindow: PopupWindow? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -37,6 +57,43 @@ class Register : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        selectorBox = binding.dropdownContainer
+        tvSelector = binding.tvSelected
+        mainLayout = binding.main
+        val opciones = listOf(
+            "I3",
+            "I4",
+            "I5",
+            "1r Primaria",
+            "2n Primaria",
+            "3r Primaria",
+            "4t Primaria",
+            "5è Primaria",
+            "6è Primaria",
+            "1r ESO",
+            "2n ESO",
+            "3r ESO",
+            "4t ESO",
+            "1r Baxillerat",
+            "2n Baxillerat",
+            "1r GM",
+            "2n GM",
+            "1r GS",
+            "2n GS",
+            "1r Carrera",
+            "2n Carrera",
+            "3r Carrera",
+            "4t Carrera",
+            "1r Master",
+            "2n Master",
+            "1r Doctorat",
+            "2n Doctorat",
+            "3r Doctorat"
+        )
+        binding.tvSelected.setOnClickListener {
+            val popupView = LayoutInflater.from(this).inflate(R.layout.popup_dropdown, null)
+            showDropdownCentered(popupView, binding.ivArrow, opciones)
         }
         viewModel.registerLoading.observe(this) { cargando ->
             if (cargando) {
@@ -56,7 +113,7 @@ class Register : AppCompatActivity() {
         }
         viewModel.profilePicture.observe(this) { profilePicture ->
             if (profilePicture != null) {
-                viewModel.register(binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), binding.textInputEditText4.text.toString(), profilePicture.path, binding.textInputEditText6.text.toString(), 0)
+                viewModel.register(binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), binding.textInputEditText4.text.toString(), profilePicture.path, tvSelector.text.toString(), 0)
             }
         }
         viewModel.error.observe(this) {
@@ -77,6 +134,48 @@ class Register : AppCompatActivity() {
         }
         binding.textView5.textSize = 20.0f
         binding.textView5.text = "Confirma el " + binding.textView5.text
+    }
+    private fun showDropdownCentered(anchor: View, arrow: ImageView, options: List<String>) {
+        // Inflar layout
+        val popupView = LayoutInflater.from(this).inflate(R.layout.popup_dropdown, null)
+
+        // Crear popup
+        val popupWindow = PopupWindow(
+            popupView,
+            200.dpToPx(),  // ancho 200dp
+            200.dpToPx(),  // alto 200dp
+            true
+        ).apply {
+            isOutsideTouchable = true
+            setBackgroundDrawable(ColorDrawable(Color.WHITE)) // fondo del popup
+            elevation = 10f
+        }
+
+        // RecyclerView
+        val rvDropdown = popupView.findViewById<RecyclerView>(R.id.rvDropdown)
+        rvDropdown.layoutManager = LinearLayoutManager(this)
+        rvDropdown.adapter = DropdownAdapter(options) { selected ->
+            binding.tvSelected.text = selected
+            popupWindow.dismiss()
+        }
+
+        // Mostrar centrado
+        popupWindow.showAtLocation(anchor.rootView, Gravity.CENTER, 0, 0)
+
+        // Opcional: rotar flecha
+        rotateArrow(arrow, true)
+        popupWindow.setOnDismissListener {
+            rotateArrow(arrow, false)
+        }
+    }
+
+    // Extensión para convertir dp a px
+    private fun Int.dpToPx(): Int =
+        (this * resources.displayMetrics.density).toInt()
+    private fun rotateArrow(arrow: ImageView, expand: Boolean) {
+        val fromDeg = if (expand) 0f else 180f
+        val toDeg = if (expand) 180f else 0f
+        arrow.animate().rotation(toDeg).setDuration(300).start()
     }
     fun registre(view: View) {
         if (binding.textInputEditText4.text.toString().equals(binding.textInputEditText5.text.toString())) {
