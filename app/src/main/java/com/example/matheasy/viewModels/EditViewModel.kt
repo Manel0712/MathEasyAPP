@@ -72,14 +72,14 @@ class EditViewModel: ViewModel() {
         }
     }
 
-    public fun edit(Alumne: Int, Nom: String, Cognoms: String, Nom_Usuari: String, Email: String, ProfilePicturePath: String, Curs: String, Experiencia: Int) {
+    public fun edit(Alumne: Int, Nom: String, Cognoms: String, Nom_Usuari: String, ProfilePicturePath: String, Curs: String, Experiencia: Int) {
         viewModelScope.launch {
             _editLoading.value = true
             _error.value = null
 
             try {
                 lateinit var resposta: Response<List<Alumne>>
-                resposta = Connection.service.edit(Alumne, Nom, Cognoms, Nom_Usuari, Email, ProfilePicturePath, Curs, Experiencia)
+                resposta = Connection.service.edit(Alumne, Nom, Cognoms, Nom_Usuari, ProfilePicturePath, Curs, Experiencia)
                 if (resposta.isSuccessful) {
                     _edit.value = resposta.body()
                 }

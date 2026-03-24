@@ -15,14 +15,8 @@ import android.media.ToneGenerator
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.ScrollView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -41,7 +35,6 @@ import java.net.InetAddress
 import com.example.matheasy.databinding.ActivityModeCompetitiuBinding
 import com.example.matheasy.models.Alumne
 import com.google.sceneform_assets.m
-import io.socket.emitter.Emitter
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -54,9 +47,6 @@ class ModeCompetitiu : AppCompatActivity() {
     private lateinit var textView15: String
     private lateinit var textView16: String
     private lateinit var codeSelected: String
-    private var chatActivo = true
-    lateinit var inputMensaje: EditText
-    lateinit var btnEnviar: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -67,9 +57,6 @@ class ModeCompetitiu : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        window.decorView.systemUiVisibility =
-            View.SYSTEM_UI_FLAG_FULLSCREEN or
-            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         textView15 = binding.textView15.text.toString()
         textView16 = binding.textView16.text.toString()
         alumne = intent!!.getSerializableExtra("Alumne") as Alumne
@@ -77,16 +64,6 @@ class ModeCompetitiu : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             connectToHostServer()
         }
-        binding.chatInput.setOnEditorActionListener { _, _, _ ->
-            sendMessageWithEnter()
-            true
-        }
-        binding.chatToggleBtn.setOnClickListener {
-            binding.chatContainer.visibility =
-                if (binding.chatContainer.visibility == View.GONE) View.VISIBLE else View.GONE
-        }
-        inputMensaje = binding.chatInput
-        btnEnviar = binding.chatSend
     }
     fun isEmulator(): Boolean {
         return (Build.MODEL.contains("Emulator")
@@ -118,7 +95,6 @@ class ModeCompetitiu : AppCompatActivity() {
                 }
             }
         }
-        //initSocket("https://matheasyweb.onrender.com/", 443)
     }
 
     private fun initSocket(ip: String, port: Int) {
@@ -208,9 +184,9 @@ class ModeCompetitiu : AppCompatActivity() {
             val data = args[0] as JSONObject
             val msg = data.optString("message")
             runOnUiThread {
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
                 binding.Lobby.visibility = View.GONE
                 binding.Resultat.visibility = View.VISIBLE
-                binding.textView25.text = "Operacio 1/10"
             }
         }
 
@@ -241,12 +217,12 @@ class ModeCompetitiu : AppCompatActivity() {
             val data = args[0] as JSONObject
             val msg = data.optString("message")
             runOnUiThread {
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
                 binding.Correcte.visibility = View.GONE
                 binding.Incorrecte.visibility = View.GONE
                 binding.Resultat.visibility = View.VISIBLE
                 index++
                 binding.textInputEditText7.setText("")
-                binding.textView25.text = "Operacio " + index+1 + "/10"
             }
         }
 
@@ -258,30 +234,6 @@ class ModeCompetitiu : AppCompatActivity() {
                 binding.podiumItem.visibility = View.VISIBLE
                 showMyPosition(participants)
             }
-        }
-
-        mSocket.on("chat-status") { args ->
-            runOnUiThread {
-                val data = args[0] as JSONObject
-                val activo = data.getBoolean("activo")
-                actualizarEstadoChat(activo)
-            }
-        }
-
-        mSocket.off("chat-message")
-        mSocket.on("chat-message", onNewMessage)
-    }
-
-    fun actualizarEstadoChat(activo: Boolean) {
-        chatActivo = activo
-
-        inputMensaje.isEnabled = activo
-        btnEnviar.isEnabled = activo
-
-        if (!activo) {
-            inputMensaje.hint = "Chat desactivado por el profesor"
-        } else {
-            inputMensaje.hint = "Escribe un mensaje..."
         }
     }
 
@@ -355,71 +307,6 @@ class ModeCompetitiu : AppCompatActivity() {
         }
     }
 
-    public fun sendMessage(view: View) {
-        val text = binding.chatInput.text.toString().trim()
-        if (text.isEmpty()) return
-
-        addMessage(alumne.Nom + " " + alumne.Cognoms, text, self = true)
-
-        val msg = JSONObject().apply {
-            put("code", codeSelected)
-            put("name", alumne.Nom + " " + alumne.Cognoms)
-            put("text", text)
-        }
-        mSocket.emit("chat-message", msg)
-
-        binding.chatInput.text.clear()
-    }
-
-    public fun sendMessageWithEnter() {
-        val text = binding.chatInput.text.toString().trim()
-        if (text.isEmpty()) return
-
-        addMessage(alumne.Nom + " " + alumne.Cognoms, text, self = true)
-
-        val msg = JSONObject().apply {
-            put("code", codeSelected)
-            put("name", alumne.Nom + " " + alumne.Cognoms)
-            put("text", text)
-        }
-        mSocket.emit("chat-message", msg)
-
-        binding.chatInput.text.clear()
-    }
-
-    private val onNewMessage = Emitter.Listener { args ->
-        runOnUiThread {
-            val data = args[0] as JSONObject
-            val name = data.getString("name")
-            val text = data.getString("text")
-            val emisor = data.getString("senderId")
-            if (emisor == mSocket.id()) return@runOnUiThread
-            addMessage(name, text, self = false)
-        }
-    }
-
-    private fun addMessage(name: String, text: String, self: Boolean) {
-        val msg = TextView(this).apply {
-            this.text = "$name: $text"
-            setPadding(10, 6, 10, 6)
-            setBackgroundColor(if (self) 0xFF32A0CE.toInt() else 0xFFEFEFEF.toInt())
-            setTextColor(if (self) 0xFFFFFFFF.toInt() else 0xFF000000.toInt())
-        }
-
-        val params = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        ).apply {
-            setMargins(6, 6, 6, 6)
-            gravity = if (self) Gravity.END else Gravity.START
-        }
-
-        binding.chatMessages.addView(msg, params)
-
-        // Scroll automático
-        binding.chatScroll.post { binding.chatScroll.fullScroll(ScrollView.FOCUS_DOWN) }
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         if (::mSocket.isInitialized) {
@@ -432,9 +319,5 @@ class ModeCompetitiu : AppCompatActivity() {
         val i: Intent = Intent()
         setResult(Activity.RESULT_OK, i)
         finish()
-    }
-
-    fun tancarXat(view: View) {
-        binding.chatContainer.visibility = View.GONE
     }
 }

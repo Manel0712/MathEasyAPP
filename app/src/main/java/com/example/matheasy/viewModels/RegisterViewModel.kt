@@ -72,14 +72,14 @@ class RegisterViewModel: ViewModel() {
         }
     }
 
-    public fun register(Nom: String, Cognoms: String, Nom_Usuari: String, Email: String, Password: String, ProfilePicturePath: String, Curs: String, Experiencia: Int) {
+    public fun register(Nom: String, Cognoms: String, Nom_Usuari: String, Password: String, ProfilePicturePath: String, Curs: String, Experiencia: Int) {
         viewModelScope.launch {
             _registerLoading.value = true
             _error.value = null
 
             try {
                 lateinit var resposta: Response<List<Alumne>>
-                resposta = Connection.service.register(Nom, Cognoms, Nom_Usuari, Email, Password, ProfilePicturePath, Curs, Experiencia)
+                resposta = Connection.service.register(Nom, Cognoms, Nom_Usuari, Password, ProfilePicturePath, Curs, Experiencia)
                 if (resposta.isSuccessful) {
                     _register.value = resposta.body()
                 }
