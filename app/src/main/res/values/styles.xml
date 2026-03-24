@@ -22,14 +22,15 @@
     <style name="textButtonInformes" parent="Button">
         <item name="android:text">@string/informesButtonText</item>
     </style>
-    <style name="textButtonTangram" parent="Button">
-        <item name="android:text">@string/tangramButtonText</item>
-    </style>
+
     <style name="textButtonPerfil" parent="Button">
         <item name="android:text">@string/perfilButtonText</item>
     </style>
     <style name="textButtonCompetitiu" parent="Button">
         <item name="android:text">@string/competitiuButtonText</item>
+    </style>
+    <style name="textButtonTasques" parent="Button">
+        <item name="android:text">@string/tasquesButtonText</item>
     </style>
     <style name="textButtonJugar">
         <item name="android:backgroundTint">@color/white</item>
@@ -77,6 +78,14 @@
         <item name="android:text">@string/tancaButtonText</item>
         <item name="android:textSize">30dp</item>
     </style>
+    <style name="textButtonSegüent">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/següentButtonText</item>
+        <item name="android:textSize">30dp</item>
+    </style>
     <style name="inputs">
         <item name="android:background">@color/fons</item>
         <item name="android:textColor">@color/black</item>
@@ -92,6 +101,14 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:text">@string/userText</item>
+    </style>
+    <style name="textViewEmail">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/emailText</item>
     </style>
     <style name="textViewPassword">
         <item name="android:fontFamily">@font/poppins</item>
@@ -124,6 +141,14 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:text">@string/cursText</item>
+    </style>
+    <style name="textViewTasques">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/tasquesText</item>
     </style>
     <style name="textButtonLogginValidate" parent="Button">
         <item name="android:text">@string/logginValidateButtonText</item>

@@ -83,6 +83,7 @@ class MainActivity2 : AppCompatActivity() {
             binding.buttonCompetitiu.visibility = View.VISIBLE
             binding.buttonInformes.visibility = View.VISIBLE
             binding.buttonPerfil.visibility = View.VISIBLE
+            binding.buttonTasques.visibility = View.VISIBLE
             mostrarOperacionDiariaSiNoVista(alumne.id.toString())
         }
     }
@@ -194,6 +195,11 @@ class MainActivity2 : AppCompatActivity() {
         i.putExtra("Alumne", alumne)
         resultLauncherConfiguration.launch(i)
     }
+    fun tasquesClick(view: View) {
+        val i = Intent(this, Tasques::class.java)
+        i.putExtra("Alumne", alumne)
+        startActivity(i)
+    }
     var resultLauncherConfiguration = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
     { result ->
         val data: Intent? = result.data
@@ -221,25 +227,24 @@ class MainActivity2 : AppCompatActivity() {
     var resultLauncherConfiguration2 = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
     { result ->
         val data: Intent? = result.data
-        alumne = data!!.getSerializableExtra("alumne") as Alumne
-        val image = "http://10.0.2.2:8000/storage/${alumne.ProfilePicturePath}"
-        Glide.with(this)
-            .load(image)
-            .dontTransform()
-            .skipMemoryCache(true)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(binding.imageView)
-        if ((alumne.experiencia.Nivell>=5 && alumne.Nivell<10) || (alumne.experiencia.Medalles>=5 && alumne.experiencia.Medalles<10)) {
-            binding.borderView.setBackgroundResource(R.drawable.oig1)
-        }
-        else if ((alumne.experiencia.Nivell>=10 && alumne.Nivell<20) || (alumne.experiencia.Medalles>=10 && alumne.experiencia.Medalles<20)) {
-            binding.borderView.setBackgroundResource(R.drawable.oig2)
-        }
-        else if ((alumne.experiencia.Nivell>=20 && alumne.Nivell<40) || (alumne.experiencia.Medalles>=20 && alumne.experiencia.Medalles<40)) {
-            binding.borderView.setBackgroundResource(R.drawable.oig3)
-        }
-        else if (alumne.experiencia.Nivell>=40 || alumne.experiencia.Medalles>=40) {
-            binding.borderView.setBackgroundResource(R.drawable.oig4)
+        if (!convidats) {
+            alumne = data!!.getSerializableExtra("alumne") as Alumne
+            val image = "http://10.0.2.2:8000/storage/${alumne.ProfilePicturePath}"
+            Glide.with(this)
+                .load(image)
+                .dontTransform()
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(binding.imageView)
+            if ((alumne.experiencia.Nivell >= 5 && alumne.Nivell < 10) || (alumne.experiencia.Medalles >= 5 && alumne.experiencia.Medalles < 10)) {
+                binding.borderView.setBackgroundResource(R.drawable.oig1)
+            } else if ((alumne.experiencia.Nivell >= 10 && alumne.Nivell < 20) || (alumne.experiencia.Medalles >= 10 && alumne.experiencia.Medalles < 20)) {
+                binding.borderView.setBackgroundResource(R.drawable.oig2)
+            } else if ((alumne.experiencia.Nivell >= 20 && alumne.Nivell < 40) || (alumne.experiencia.Medalles >= 20 && alumne.experiencia.Medalles < 40)) {
+                binding.borderView.setBackgroundResource(R.drawable.oig3)
+            } else if (alumne.experiencia.Nivell >= 40 || alumne.experiencia.Medalles >= 40) {
+                binding.borderView.setBackgroundResource(R.drawable.oig4)
+            }
         }
     }
 }

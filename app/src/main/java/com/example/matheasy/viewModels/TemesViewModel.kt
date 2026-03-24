@@ -4,9 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -23,38 +20,38 @@ import android.util.Log
 import okhttp3.ResponseBody
 import java.io.OutputStream
 import android.provider.MediaStore
-import androidx.core.content.res.ResourcesCompat
-import com.example.matheasy.R
-import com.example.matheasy.models.ImageUpload
+import com.example.matheasy.models.AlumneTasca
+import com.example.matheasy.models.Resposta
+import com.example.matheasy.models.Tema
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 
-class RegisterViewModel: ViewModel() {
-    private val _registerLoading = MutableLiveData(false)
-    public val registerLoading: LiveData<Boolean> get() = _registerLoading
+class TemesViewModel: ViewModel() {
+    private val _temaLoading = MutableLiveData(false)
+    public val temaLoading: LiveData<Boolean> get() = _temaLoading
 
-    private val _register = MutableLiveData<List<Alumne>>(emptyList())
-    public val register: LiveData<List<Alumne>> get() = _register
+    private val _tema = MutableLiveData<List<Tema>>()
+    public val tema: LiveData<List<Tema>> get() = _tema
 
-    private val _profilePicture = MutableLiveData<ImageUpload>()
-    public val profilePicture: LiveData<ImageUpload> get() = _profilePicture
+    private val _entrega = MutableLiveData<List<AlumneTasca>>()
+    public val entrega: LiveData<List<AlumneTasca>> get() = _entrega
 
     private val _error = MutableLiveData<String?>(null)
     public val error: LiveData<String?> get() = _error
 
-    public fun profilePictureUpload(Bse64: String, extension: String) {
+    public fun temes(alumne: Int) {
         viewModelScope.launch {
-            _registerLoading.value = true
+            _temaLoading.value = true
             _error.value = null
 
             try {
-                lateinit var resposta: Response<ImageUpload>
-                resposta = Connection.service.perfilImageUpload(DownloadBase64Image(image = Bse64, extension = extension))
+                lateinit var resposta: Response<List<Tema>>
+                resposta = Connection.service.tasquesAlumne(alumne)
                 if (resposta.isSuccessful) {
-                    _profilePicture.value = resposta.body()
+                    _tema.value = resposta.body()
                 }
                 else {
                     _error.value = "ERROR CODE: " + resposta.code().toString()
@@ -67,21 +64,21 @@ class RegisterViewModel: ViewModel() {
                 _error.value = "Error desconocido: ${e.localizedMessage}"
             }
             finally {
-                _registerLoading.value = false
+                _temaLoading.value = false
             }
         }
     }
 
-    public fun register(Nom: String, Cognoms: String, Nom_Usuari: String, Email: String, Password: String, ProfilePicturePath: String, Curs: String, Experiencia: Int) {
+    public fun entregues(Email: String, alumneTasca: Int, Estat_tramesa: String, Resultat1: Int, Resultat2: Int, Resultat3: Int, Resultat4: Int, Resultat5: Int, Resultat6: Int, Resultat7: Int, Resultat8: Int, Resultat9: Int, Resultat10: Int) {
         viewModelScope.launch {
-            _registerLoading.value = true
+            _temaLoading.value = true
             _error.value = null
 
             try {
-                lateinit var resposta: Response<List<Alumne>>
-                resposta = Connection.service.register(Nom, Cognoms, Nom_Usuari, Email, Password, ProfilePicturePath, Curs, Experiencia)
+                lateinit var resposta: Response<List<AlumneTasca>>
+                resposta = Connection.service.afegirRespostesOperacions(alumneTasca, Email, Estat_tramesa, Resultat1, Resultat2, Resultat3, Resultat4, Resultat5, Resultat6, Resultat7, Resultat8, Resultat9, Resultat10)
                 if (resposta.isSuccessful) {
-                    _register.value = resposta.body()
+                    _entrega.value = resposta.body()
                 }
                 else {
                     _error.value = "ERROR CODE: " + resposta.code().toString()
@@ -94,15 +91,15 @@ class RegisterViewModel: ViewModel() {
                 _error.value = "Error desconocido: ${e.localizedMessage}"
             }
             finally {
-                _registerLoading.value = false
+                _temaLoading.value = false
             }
         }
     }
 }
 
 @Suppress("UNCHECKED_CAST")
-class RegisterViewModelFactory(): ViewModelProvider.Factory {
+class TemesViewModelFactory(): ViewModelProvider.Factory {
     override fun <T: ViewModel> create(modelClass: Class<T>): T {
-        return RegisterViewModel() as T
+        return TemesViewModel() as T
     }
 }

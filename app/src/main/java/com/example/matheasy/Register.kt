@@ -113,7 +113,7 @@ class Register : AppCompatActivity() {
         }
         viewModel.profilePicture.observe(this) { profilePicture ->
             if (profilePicture != null) {
-                viewModel.register(binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), binding.textInputEditText4.text.toString(), profilePicture.path, tvSelector.text.toString(), 0)
+                viewModel.register(binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), binding.textInputEditText8.text.toString(), binding.textInputEditText4.text.toString(), profilePicture.path, tvSelector.text.toString(), 0)
             }
         }
         viewModel.error.observe(this) {

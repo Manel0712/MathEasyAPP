@@ -18,6 +18,7 @@ data class Alumne (
     var Password: String,
     var ProfilePicturePath: String,
     var Nom_Usuari: String,
+    var Email: String,
     var Curs: String,
     var Nivell: Int,
     var experiencia: Experiencia,

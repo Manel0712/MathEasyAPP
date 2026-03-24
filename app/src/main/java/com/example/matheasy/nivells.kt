@@ -1802,8 +1802,8 @@ class nivells : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         dialog.show()
 
-        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)?.setTextColor(context.getColor(android.R.color.holo_blue_dark))
-        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE)?.setTextColor(context.getColor(android.R.color.holo_red_dark))
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)?.setTextColor(context.getColor(R.color.fons))
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE)?.setTextColor(context.getColor(R.color.fons))
     }
     fun generarDivisiones() {
         val operaciones = mutableListOf<Pair<String, Int>>() // Pair<operación, resultado>

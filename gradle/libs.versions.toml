@@ -65,4 +65,5 @@ play-services-maps3d = { module = "com.google.android.gms:play-services-maps3d",
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 secrets-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 

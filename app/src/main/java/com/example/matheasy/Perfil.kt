@@ -79,7 +79,7 @@ class Perfil : AppCompatActivity() {
         }
         viewModel.profilePicture.observe(this) { profilePicture ->
             if (profilePicture != null) {
-                viewModel.edit(alumne.id, binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), profilePicture.path, binding.textInputEditText6.text.toString(), alumne.experiencia.id)
+                viewModel.edit(alumne.id, binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), binding.textInputEditText9.text.toString(), profilePicture.path, binding.textInputEditText6.text.toString(), alumne.experiencia.id)
             }
         }
         viewModel.error.observe(this) {
@@ -148,7 +148,7 @@ class Perfil : AppCompatActivity() {
         return MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType) ?: "jpg"
     }
     fun saveClick(view: View) {
-        viewModel.edit(alumne.id, binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), alumne.ProfilePicturePath, binding.textInputEditText6.text.toString(), alumne.experiencia.id)
+        viewModel.edit(alumne.id, binding.textInputEditText.text.toString(), binding.textInputEditText2.text.toString(), binding.textInputEditText3.text.toString(), binding.textInputEditText9.text.toString(), alumne.ProfilePicturePath, binding.textInputEditText6.text.toString(), alumne.experiencia.id)
     }
     fun closeClick(view: View) {
         val i = Intent(this, MainActivity2::class.java)

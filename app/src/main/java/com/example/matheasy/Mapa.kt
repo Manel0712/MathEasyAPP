@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.service.autofill.Validators.or
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -77,6 +78,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class Mapa : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapaBinding
@@ -289,6 +291,13 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                         marcarUbicacion(niveles[c])
                     }
                 }
+                for (c in 1 until niveles.size) {
+                    if (niveles[c-1].completado) {
+                        val origen = LatLng(niveles[c-1].lat, niveles[c-1].lng)
+                        val destino = LatLng(niveles[c].lat, niveles[c].lng)
+                        obtenerRuta(origen, destino)
+                    }
+                }
             }
         }
         else if (data.getStringExtra("numero").toString().equals("1-2")) {
@@ -306,6 +315,13 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                         marcarUbicacion(niveles[c])
                     }
                 }
+                for (c in 1 until niveles.size) {
+                    if (niveles[c-1].completado) {
+                        val origen = LatLng(niveles[c-1].lat, niveles[c-1].lng)
+                        val destino = LatLng(niveles[c].lat, niveles[c].lng)
+                        obtenerRuta(origen, destino)
+                    }
+                }
             }
         }
         else if (data.getStringExtra("numero").toString().equals("1-3")) {
@@ -321,6 +337,13 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                 for (c in 0 until 6) {
                     if (!niveles[c].bloqueado) {
                         marcarUbicacion(niveles[c])
+                    }
+                }
+                for (c in 1 until niveles.size) {
+                    if (niveles[c-1].completado) {
+                        val origen = LatLng(niveles[c-1].lat, niveles[c-1].lng)
+                        val destino = LatLng(niveles[c].lat, niveles[c].lng)
+                        obtenerRuta(origen, destino)
                     }
                 }
             }
@@ -351,6 +374,13 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                             marcarUbicacion(niveles[c])
                         }
                     }
+                    for (c in 1 until niveles.size) {
+                        if (niveles[c-1].completado) {
+                            val origen = LatLng(niveles[c-1].lat, niveles[c-1].lng)
+                            val destino = LatLng(niveles[c].lat, niveles[c].lng)
+                            obtenerRuta(origen, destino)
+                        }
+                    }
                 }
             }
         }
@@ -367,6 +397,13 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                 for (c in 0 until 6) {
                     if (!niveles[c].bloqueado) {
                         marcarUbicacion(niveles[c])
+                    }
+                }
+                for (c in 1 until niveles.size) {
+                    if (niveles[c-1].completado) {
+                        val origen = LatLng(niveles[c-1].lat, niveles[c-1].lng)
+                        val destino = LatLng(niveles[c].lat, niveles[c].lng)
+                        obtenerRuta(origen, destino)
                     }
                 }
             }
@@ -387,15 +424,22 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
                     }
                 }*/
                 mapa.clear()
+                niveles[5].completado = true
+                binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
+                    marcarUbicacion(location)
+                    cerrarPanel()
+                }
+                binding.rvLocations.adapter!!.notifyDataSetChanged()
                 for (c in 0 until 6) {
-                    niveles[5].completado = true
-                    binding.rvLocations.adapter = LocationAdapter(this, niveles) { location ->
-                        marcarUbicacion(location)
-                        cerrarPanel()
-                    }
-                    binding.rvLocations.adapter!!.notifyDataSetChanged()
                     if (!niveles[c].bloqueado) {
                         marcarUbicacion(niveles[c])
+                    }
+                }
+                for (c in 1 until niveles.size) {
+                    if (niveles[c-1].completado) {
+                        val origen = LatLng(niveles[c-1].lat, niveles[c-1].lng)
+                        val destino = LatLng(niveles[c].lat, niveles[c].lng)
+                        obtenerRuta(origen, destino)
                     }
                 }
                 mostrarDialogoAceptar(this, "Mes nivells properament")
@@ -431,6 +475,8 @@ class Mapa : AppCompatActivity(), OnMapReadyCallback {
 
         val dialog = builder.create()
         dialog.show()
+
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)?.setTextColor(context.getColor(R.color.fons))
     }
 
     private fun abrirPanel() {
